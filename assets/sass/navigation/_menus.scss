@@ -1,0 +1,55 @@
+
+
+.nav {
+	clear:both;
+	position: relative;
+	width:100%;
+
+	ul {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+	}
+
+	li {
+		
+		a {
+			display: block;
+			padding: 1em 1.2em;
+			text-decoration: none;
+			outline:none;
+			&:hover {
+				opacity:1;
+			}
+		}
+	}
+
+	.sub-menu, .children {
+		position: absolute;
+		top: 100%;
+		display: none;
+		
+		float: left;
+		min-width: 12.5em;
+		//margin-top: 0.5em;
+		margin-left: 0;
+		text-align: left;
+		
+		z-index: 1000;
+		
+		ul, ol {
+			margin-left: 0;
+			list-style: none;
+		}
+
+		&.active {
+			display: block;
+			visibility: visible;
+		}
+	}
+}
+/*  Sets dropdown link to relative positioning */
+
+.menu-item-has-children {
+	position: relative;
+}

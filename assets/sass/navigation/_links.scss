@@ -1,0 +1,12 @@
+a {
+	color: royalblue;
+
+	&:visited {
+		color: purple;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: midnightblue;
+	}
+}

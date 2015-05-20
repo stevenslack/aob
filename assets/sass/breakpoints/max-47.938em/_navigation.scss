@@ -1,0 +1,135 @@
+
+
+/* Menu Toggle
+----------------------------------------------- */
+
+.nav-toggle {
+    display: block;
+    float: right;
+    padding: 1em 1.5em;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .burger-icon {
+        display: inline-block;
+        margin-left: .3em;
+        vertical-align: middle; 
+    }
+
+    &.active .burger-icon {
+        @include burger-to-cross;
+    }
+}
+
+.burger-icon {
+	@include burger(25px, 3px, 5px, #444);
+}
+
+
+
+
+/* Main Menu
+ ----------------------------------------------- */
+
+.nav {
+	width: 100%;
+
+	li {
+		width: 100%;
+		display: block;
+		float:left;
+
+		> a {
+			padding: 1em;
+			font-weight: 300;
+			border-bottom: 1px solid #ccc;
+		}
+	}
+
+	.sub-menu, .children {
+		position: relative;
+		width: 100%;
+		display:block;
+		overflow: hidden;
+		max-height: 0px;
+		min-width: 100%;
+
+		@include transition (max-height 350ms ease-in-out);
+
+		&.active {
+			max-height: 99em;
+			@include transition (max-height 350ms ease-in-out);
+		}
+
+		li {
+			position:relative;
+			&:before {
+				content: '-';
+				position: absolute;
+				left: 1em;
+				top: 1em;
+			}
+			a {
+				padding-left:2em;
+				width: 100%;	
+			}
+			ul {
+				li {
+					&:before { left:2em; }
+					a {
+						padding-left:3em;
+					}
+				}
+			} // grandchild 
+		} // end list element
+	}
+}
+
+/*  When a dropdown is active, display a caret pointing up instead.
+ *  You can remove this or change it to a different symbol.
+ *  (For example, a "-" symbol.) */
+
+/*  Styling for the dropdown content.
+ *  Hides the content by default. */
+
+.js-astro {
+	.nav-toggle {
+		display: block;
+		visibility: visible;
+	}
+	.nav-menu {
+		max-height: 0;
+		overflow: hidden;
+		width: 100%;
+		text-align: left;
+		/*  CSS3 animation for when menu content expands */
+		@include transition (max-height 350ms ease-in-out);
+		
+		&.active {
+			max-height: 99em;
+			@include transition (max-height 350ms ease-in-out);
+		}	
+	}
+	.menu-item-has-children > a {
+		padding-right:3em;
+		&:after {
+			@include genericon-rules;
+			content: '\f431';
+			font-size: 1.5em;
+			right: 0.5em;
+			top: 0.66em;
+			position: absolute;
+		}
+		&.active:after {
+			content: '\f432';
+		}
+	}
+}
