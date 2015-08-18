@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 
         // autoprefixer
         autoprefixer: {
-            
+
             multiple_files: {
                 options: {
                     browsers: ['last 2 versions', 'ie 8', 'ie 9', 'ios 6', 'android 4'],
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
                 dest: 'style.css'
             },
         },
-        
+
         // // javascript linting with jshint
         // jshint: {
         //     options: {
@@ -144,6 +144,11 @@ module.exports = function(grunt) {
                 files: ['assets/sass/**/*.{scss,sass}'],
                 tasks: ['sass', 'autoprefixer']
             },
+            header: {
+                files: 'style.css',
+                tasks: ['header']
+
+            },
             js: {
                 files: 'assets/js/components/init.js',
                 tasks: ['uglify']
@@ -160,7 +165,7 @@ module.exports = function(grunt) {
 
     });
 
-    
+
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-jshint');
