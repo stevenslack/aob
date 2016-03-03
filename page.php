@@ -2,7 +2,7 @@
 /**
  * The default template for displaying all pages.
  *
- * @package _s2
+ * @package aob
  */
 
 get_header(); ?>

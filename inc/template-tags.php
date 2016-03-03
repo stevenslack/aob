@@ -2,7 +2,7 @@
 /**
  * Custom template tags for this theme.
  *
- * @package _s2
+ * @package aob
  */
 
 if ( ! function_exists( 'the_posts_navigation' ) ) :
@@ -18,15 +18,15 @@ function the_posts_navigation() {
 	}
 	?>
 	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', '_s2' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'aob' ); ?></h2>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', '_s2' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'aob' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', '_s2' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'aob' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -51,7 +51,7 @@ function the_post_navigation() {
 	}
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', '_s2' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'aob' ); ?></h2>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
@@ -64,11 +64,11 @@ function the_post_navigation() {
 endif;
 
 
-if ( ! function_exists( '_s2_posted_on' ) ) :
+if ( ! function_exists( '_aob_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function _s2_posted_on() {
+function _aob_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -82,12 +82,12 @@ function _s2_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		_x( 'Posted on %s', 'post date', '_s2' ),
+		_x( 'Posted on %s', 'post date', 'aob' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		_x( 'by %s', 'post author', '_s2' ),
+		_x( 'by %s', 'post author', 'aob' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -97,30 +97,30 @@ function _s2_posted_on() {
 endif;
 
 
-if ( ! function_exists( '_s2_entry_footer' ) ) :
+if ( ! function_exists( '_aob_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function _s2_entry_footer() {
+function _aob_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', '_s2' ) );
-		if ( $categories_list && _s2_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Posted in %1$s', '_s2' ) . '</span>', $categories_list );
+		$categories_list = get_the_category_list( __( ', ', 'aob' ) );
+		if ( $categories_list && _aob_categorized_blog() ) {
+			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'aob' ) . '</span>', $categories_list );
 		}
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', '_s2' ) );
+		$tags_list = get_the_tag_list( '', __( ', ', 'aob' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . __( 'Tagged %1$s', '_s2' ) . '</span>', $tags_list );
+			printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'aob' ) . '</span>', $tags_list );
 		}
 	}
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', '_s2' ), __( '1 Comment', '_s2' ), __( '% Comments', '_s2' ) );
+		comments_popup_link( __( 'Leave a comment', 'aob' ), __( '1 Comment', 'aob' ), __( '% Comments', 'aob' ) );
 		echo '</span>';
 	}
-	edit_post_link( __( 'Edit', '_s2' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( __( 'Edit', 'aob' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
@@ -130,8 +130,8 @@ endif;
  *
  * @return bool
  */
-function _s2_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( '_s2_categories' ) ) ) {
+function _aob_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( '_aob_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -144,24 +144,24 @@ function _s2_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( '_s2_categories', $all_the_cool_cats );
+		set_transient( '_aob_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so _s2_categorized_blog should return true.
+		// This blog has more than 1 category so _aob_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so _s2_categorized_blog should return false.
+		// This blog has only 1 category so _aob_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in _s2_categorized_blog.
+ * Flush out the transients used in _aob_categorized_blog.
  */
-function _s2_category_transient_flusher() {
+function _aob_category_transient_flusher() {
 	// Like, beat it. Dig?
-	delete_transient( '_s2_categories' );
+	delete_transient( '_aob_categories' );
 }
-add_action( 'edit_category', '_s2_category_transient_flusher' );
-add_action( 'save_post',     '_s2_category_transient_flusher' );
+add_action( 'edit_category', '_aob_category_transient_flusher' );
+add_action( 'save_post',     '_aob_category_transient_flusher' );

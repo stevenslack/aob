@@ -9,19 +9,19 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     text: '/*\n' +
-                            'Theme Name: _s2\n' +
-                            'Theme URI: https://github.com/S2web/_s2\n' +
+                            'Theme Name: Asheville on Bikes v2\n' +
+                            'Theme URI: https://github.com/stevenslack/aob\n' +
                             'Author: Steven Slack\n' +
-                            'Author URI: http://s2webpress.com\n' +
-                            'Description: A starter theme based on <em>underscores</em> by Automattic\n' +
-                            'Version: 1.3\n' +
+                            'Author URI: http://stevenslack.com\n' +
+                            'Description: The Asheville on Bikes theme is a a fork of the Underscores.me starter theme from Automattic\n' +
+                            'Version: 2.0\n' +
                             'License: GNU General Public License v2 or later\n' +
                             'License URI: http://www.gnu.org/licenses/gpl-2.0.html\n' +
-                            'Text Domain: _s2\n' +
+                            'Text Domain: aob\n' +
                             'Tags:\n\n' +
                             'This theme, like WordPress, is licensed under the GPL.\n' +
                             'Use it to make something cool, have fun, and share what you\'ve learned with others.\n\n' +
-                             '_s2 is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.\n' +
+                             'aob is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.\n' +
                             ' */\n',
                 },
                 files: {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         criticalcss: {
             custom_options: {
                 options: {
-                    url: "http://localhost/multisite/terra/", // enter your localhost URL
+                    url: "http://localhost/multisite/aob2/", // enter your localhost URL
                     width: 1200,
                     height: 900,
                     outputfile: "assets/css/critical.css",

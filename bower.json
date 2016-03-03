@@ -5,7 +5,7 @@
   "authors": [
     "Steven Slack <steven@s2webpress.com>"
   ],
-  "description": "Packages for _s2",
+  "description": "Packages for aob",
   "license": "MIT",
   "private": true,
   "ignore": [
