@@ -109,7 +109,7 @@ module.exports = function(grunt) {
                     'assets/js/main.js': [
                         'bower_components/fastclick/index.js',
                         'bower_components/astro/dist/js/astro.js',
-                        'bower_components/drop/dist/js/drop.js',
+                        'assets/js//components/drop.js',
                         'assets/js/components/skip-link-focus-fix.js',
                         'assets/js/components/init.js',
                     ],

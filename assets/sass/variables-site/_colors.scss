@@ -1,1 +1,21 @@
 $main_color: #404040;
+
+/* Links */
+
+$link-color:    #78BDA8;
+$link-visited:  lighten($link-color, 08);
+$link-hover:    #F05448;
+
+/** color Palette **/
+
+$body:          #383317;
+$header-border: #CBC8BB;
+$content-bg:    #FFFBF0;
+$title-red:     #F0392C;
+$bright-red:    #F05448;
+$mid-red:       #BD3F26;
+$dark-red:      #9C2614;
+$almost-white:  #FEFDF8;
+$light-tan:     #888473;
+$dark:          #888473;
+$img-border:    #EDE9DF;

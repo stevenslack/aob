@@ -1,4 +1,4 @@
-		<button class="nav-toggle" aria-controls="nav-primary" data-nav-toggle="#nav-primary" href="#">
+		<button id="toggle" class="nav-toggle" aria-controls="nav-primary" data-nav-toggle="#nav-primary" href="#">
 			<?php _e( 'Menu', 'aob' ); ?> <span class="burger-icon" aria-hidden="true"></span>
 		</button>
 

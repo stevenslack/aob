@@ -99,6 +99,8 @@ add_action( 'widgets_init', '_aob_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _aob_scripts() {
+	wp_enqueue_style( 'google-font', 'http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700', '', '', '' );
+
 	wp_enqueue_style( '_aob-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( '_aob-scripts', get_template_directory_uri() . '/assets/js/main.js', array(), '20120206', true );

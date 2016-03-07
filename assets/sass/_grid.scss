@@ -1,0 +1,6 @@
+.site-wrap {
+  padding-left: 1em;
+  padding-right: 1em;
+  @include fill-parent;
+  @include outer-container(em(1100));
+}

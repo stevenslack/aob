@@ -27,12 +27,18 @@
 
 	<!-- Site Header -->
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</div>
+		<div class="site-wrap">
+			<div class="site-branding">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<?php get_template_part( 'templates/logo' ); ?>
+					<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+				</a><br>
+				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+			</div>
 
-		<?php get_template_part( 'templates/main', 'navigation' ); ?>
+			<?php get_template_part( 'templates/main', 'navigation' ); ?>
+		</div>
+		<!-- /.site-wrap -->
 	</header><!-- #masthead -->
 
 	<!-- Site Content -->
