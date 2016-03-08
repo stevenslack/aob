@@ -163,3 +163,52 @@ require get_template_directory() . '/inc/theme-options.php';
  * Get the custom nav walker for the primary menu
  */
 require get_template_directory() . '/inc/class-drop-walker-nav.php';
+
+/**
+ * White Label Soliloquy
+ */
+add_filter( 'gettext', 'aob_soliloquy_whitelabel', 10, 3 );
+function aob_soliloquy_whitelabel( $translated_text, $source_text, $domain ) {
+
+    // If not in the admin, return the default string.
+    if ( ! is_admin() ) {
+        return $translated_text;
+    }
+
+    if ( strpos( $source_text, 'Soliloquy Slider' ) !== false ) {
+        return str_replace( 'Soliloquy Slider', 'Slider', $translated_text );
+    }
+
+    if ( strpos( $source_text, 'Soliloquy Sliders' ) !== false ) {
+        return str_replace( 'Soliloquy Sliders', 'Sliders', $translated_text );
+    }
+
+    if ( strpos( $source_text, 'Soliloquy slider' ) !== false ) {
+        return str_replace( 'Soliloquy slider', 'slider', $translated_text );
+    }
+
+    if ( strpos( $source_text, 'Soliloquy' ) !== false ) {
+        return str_replace( 'Soliloquy', 'Sliders', $translated_text );
+    }
+
+    return $translated_text;
+
+}
+
+/**
+ * CUSTOM LOGIN PAGE
+ */
+function aob_login_css() {
+	wp_enqueue_style( 'aob_login_css', get_template_directory_uri() . '/assets/css/login.css', false );
+}
+
+// changing the logo link from wordpress.org to your site
+function aob_login_url() { return home_url(); }
+
+// changing the alt text on the logo to show your site name
+function aob_login_title() { return get_option( 'blogname' ); }
+
+// calling it only on the login page
+add_action( 'login_enqueue_scripts', 'aob_login_css', 10 );
+add_filter( 'login_headerurl', 'aob_login_url' );
+add_filter( 'login_headertitle', 'aob_login_title' );

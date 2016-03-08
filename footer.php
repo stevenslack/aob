@@ -7,7 +7,7 @@
  * @package aob
  */
 ?>
-
+        </div><!-- .site-wrap -->
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">

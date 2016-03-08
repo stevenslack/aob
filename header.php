@@ -76,3 +76,4 @@
 
 	<!-- Site Content -->
 	<div id="content" class="site-content">
+		<div class="site-wrap">
