@@ -155,6 +155,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
+ * Theme Options
+ */
+require get_template_directory() . '/inc/theme-options.php';
+
+/**
  * Get the custom nav walker for the primary menu
  */
 require get_template_directory() . '/inc/class-drop-walker-nav.php';
