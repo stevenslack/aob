@@ -27,7 +27,7 @@
 
 	<!-- Site Header -->
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-		<div class="site-wrap">
+		<div class="inner-wrap">
 			<?php
 				$aob_options = get_option( 'ashevilleonbikes_theme_options' );
 				if ( ! empty( $aob_options['donate_url'] ) || ! empty( $aob_options['newsletter_url'] ) ) :
@@ -71,9 +71,9 @@
 				<?php get_search_form(); ?>
 			</div><!--foot-social-->
 		</div>
-		<!-- /.site-wrap -->
+		<!-- /.inner-wrap -->
 	</header><!-- #masthead -->
 
 	<!-- Site Content -->
 	<div id="content" class="site-content">
-		<div class="site-wrap">
+		<div class="inner-wrap">
