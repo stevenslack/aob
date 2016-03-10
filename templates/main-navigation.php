@@ -3,14 +3,16 @@
 		</button>
 
 		<nav id="site-navigation" class="nav" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-			<?php wp_nav_menu(
-				array(
-					'theme_location'	=> 'primary',
-					'container'			=> false,
-					'menu_id'			=> 'nav-primary',
-					'menu_class'        => 'nav-menu',
-					'fallback_cb'		=> '',
-					"walker"			=> new Drop_Menu_Walker(),
-				)
-			); ?>
+			<div class="inner-wrap">
+				<?php wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'container'      => false,
+						'menu_id'        => 'nav-primary',
+						'menu_class'     => 'nav-menu',
+						'fallback_cb'    => '',
+						"walker"         => new Drop_Menu_Walker(),
+					)
+				); ?>
+			</div>
         </nav>

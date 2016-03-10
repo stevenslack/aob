@@ -9,8 +9,9 @@
 /*--------------------------------------------------------------
  Mixins & Variables
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
+@import "variables-site/colors";
+@import "variables-site/typography";
+@import "mixins-master";
 
 /*--------------------------------------------------------------
  Normalize
@@ -45,7 +46,8 @@
 /*--------------------------------------------------------------
 6.0 Navigation
 --------------------------------------------------------------*/
-@import "navigation/navigation";
+@import "navigation/links";
+@import "navigation/menus";;
 @import "navigation/pagination";
 
 /*--------------------------------------------------------------

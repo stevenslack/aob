@@ -12,14 +12,18 @@
 	}
 
 	li {
-		
+
 		a {
 			display: block;
 			padding: 1em 1.2em;
 			text-decoration: none;
+			color: $light-tan;
 			outline:none;
+		    text-transform: uppercase;
+		    font-weight: bold;
 			&:hover {
 				opacity:1;
+				color: $bright-red;
 			}
 		}
 	}
@@ -28,15 +32,15 @@
 		position: absolute;
 		top: 100%;
 		display: none;
-		
+
 		float: left;
 		min-width: 12.5em;
 		//margin-top: 0.5em;
 		margin-left: 0;
 		text-align: left;
-		
+
 		z-index: 1000;
-		
+
 		ul, ol {
 			margin-left: 0;
 			list-style: none;

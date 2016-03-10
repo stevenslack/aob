@@ -50,8 +50,6 @@
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</div>
 
-			<?php get_template_part( 'templates/main', 'navigation' ); ?>
-
 			<div class="social-head">
 				<span class="social">
 					<?php if ( ! empty( $aob_options['google_input'] ) && $google_plus = $aob_options['google_input'] ) : ?>
@@ -68,11 +66,12 @@
 						<a href="mailto://<?php echo antispambot( $email ); ?>" class="aob-email" target="_blank"><span class="screen-reader-text"><?php esc_html_e( 'Contact Asheville on Bikes', 'aob' ); ?></span></a>
 					<?php endif; ?>
 				</span>
-				<?php get_search_form(); ?>
 			</div><!--foot-social-->
 		</div>
 		<!-- /.inner-wrap -->
 	</header><!-- #masthead -->
+
+	<?php get_template_part( 'templates/main', 'navigation' ); ?>
 
 	<!-- Site Content -->
 	<div id="content" class="site-content">
