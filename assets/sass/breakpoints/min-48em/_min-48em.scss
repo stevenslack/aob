@@ -1,1 +1,19 @@
+.site-content {
+    .inner-wrap {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+}
+
+#primary {
+    float: left;
+    width: 70%;
+}
+
+#secondary {
+    float: right;
+    width: 26%;
+}
+
 @import "navigation";
+

@@ -19,8 +19,10 @@ address {
 }
 
 pre {
-	background: #eee;
+	background: #fff;
+	border: 1px solid $body_bg;
 	font-family: $font__pre;
+	color: #9C4D4D;
 	@include font-size(16);
 	line-height: 1.6;
 	margin-bottom: 1.6em;
@@ -31,7 +33,8 @@ pre {
 
 code {
   display: inline-block;
-  background: #D7D7D7;
+  background: $body_bg;
+  color: #9C4D4D;
   padding: 0.1em 0.2em;
   border-radius: 3px;
   border: 1px solid #CBCBCB;

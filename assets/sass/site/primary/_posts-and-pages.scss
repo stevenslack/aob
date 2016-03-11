@@ -21,9 +21,38 @@
 .entry-summary {
 	margin: 1.5em 0 0;
     font-family: $font__content;
+    ul {
+        list-style: none;
+        li {
+            &:before {
+                font-family: 'aob-font';
+                content: "\e001";
+                position: absolute;
+                font-size: 0.7em;
+                left: -22px;
+                line-height: 2.2;
+                color: $bright-red;
+                display: inline-block;
+            }
+        }
+    }
 }
 
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.entry-title {
+    font-size: 36px;
+    border-bottom: 1px solid #F0ECE1;
+    margin-bottom:0.5em;
+    padding-bottom: 0.5em;
+
+    a {
+        color: $body;
+        &:hover {
+            color:$bright-red;
+        }
+    }
 }

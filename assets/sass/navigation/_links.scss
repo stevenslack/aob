@@ -1,12 +1,13 @@
 a {
-	color: royalblue;
+	color: $link-color;
+	text-decoration: none;
+	@include transition(color 0.2s ease-in-out);
 
 	&:visited {
-		color: purple;
+		color: $link-visited;
 	}
-	&:hover,
-	&:focus,
-	&:active {
-		color: midnightblue;
+
+	&:hover, &:focus, &:active {
+		color: $link-hover;
 	}
 }
