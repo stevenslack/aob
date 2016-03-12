@@ -22,3 +22,50 @@ dt {
 dd {
 	margin: 0 1.5em 1.5em;
 }
+
+.page-content,
+.entry-content,
+.entry-summary,
+.widget-area {
+    ul {
+        list-style: none;
+
+        li,
+        ol ul > li {
+            text-indent: -6px;
+
+            &:before {
+                font-family: 'aob-font';
+                position: relative;
+                vertical-align: middle;
+                font-size: 0.7em;
+                left: -20px;
+                top: 1px;
+                color: $bright-red;
+                display: inline-block;
+            }
+        }
+
+        ol li:before {
+            display: none;
+        }
+    }
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+    ul, ol ul {
+        li:before {
+            content: "\e001"; // the circle
+        }
+    }
+}
+
+.widget-area {
+    ul, ol ul {
+        li:before {
+            content: "\e006"; // the chain
+        }
+    }
+}
