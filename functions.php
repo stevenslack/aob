@@ -27,6 +27,7 @@ function _aob_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 200, 200 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -63,6 +64,11 @@ function _aob_setup() {
 }
 endif; // _aob_setup
 add_action( 'after_setup_theme', '_aob_setup' );
+
+// post and page featured image
+add_image_size( 'post-thumb', 1100, 618 );
+// the featured image on the blog page 16:9 ratio
+add_image_size( 'blog-thumb', 771, 433 );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.

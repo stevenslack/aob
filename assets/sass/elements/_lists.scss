@@ -8,6 +8,9 @@ ul {
 
 ol {
 	list-style: decimal;
+    li {
+        text-indent: 0;
+    }
 }
 
 li > ul,
@@ -46,8 +49,13 @@ dd {
             }
         }
 
-        ol li:before {
-            display: none;
+        ol {
+            li {
+            text-indent: 0;
+                &:before {
+                    display: none;
+                }
+            }
         }
     }
 }

@@ -1,3 +1,7 @@
+#secondary {
+    margin-top: em(38);
+}
+
 .widget {
 	margin: 0 0 1.5em;
 
@@ -7,7 +11,73 @@
 	}
 }
 
+.widget-title {
+    margin-bottom: 0.6em;
+    padding-bottom: 0.5em;
+    color: $bright-red;
+    font-style: italic;
+    font-size: 1.25em;
+    font-family: 'Georgia', serif;
+}
+
 /* Search widget */
-.widget_search .search-submit {
-	display: none;
+.widget_search {
+    .search-submit {
+        display: none;
+    }
+
+    input[type="search"] {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5em;
+    }
+}
+
+.tagcloud {
+    font-size: 1.3em;
+}
+
+.widget_tag_cloud a,
+.widget_categories a {
+    font-weight: bold;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.widget {
+    /* MailChimp */
+    #mc_embed_signup {
+        background:$bright-red;
+
+        .button {
+            border-radius:0;
+            background:$dark-red;
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            color:$content-bg;
+            text-transform: uppercase;
+            text-shadow:none;
+            font-weight: bold;
+            font-family: 'Open Sans Condensed', sans-serif;
+
+            &:hover {
+                background:$mid-red;
+            }
+
+
+        }
+
+        .mc-field-group {
+
+            label {
+                color:$dark-red;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-family: 'Open Sans Condensed', sans-serif;
+            }
+            input {
+                border:none;
+                border-radius:0;
+            }
+        }
+    }
 }

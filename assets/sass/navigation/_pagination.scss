@@ -15,12 +15,13 @@
   }
 
   a {
-    background-color: #ccc;
-    color: #333;
+    background-color: $bright-red;
+    color: white;
     text-decoration: none;
+    margin: 0 0.2em;
 
     &.prev {
-     
+
     }
   }
 
@@ -30,8 +31,8 @@
   }
 
   a:hover, .current {
-      background: lighten(#ccc,10);
-      color: #333;
+      background: $dark-red;
+      color: white;
   }
 }
 
