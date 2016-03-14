@@ -5,6 +5,10 @@
     }
 }
 
+.site-branding {
+    float: left;
+}
+
 .nav-previous,
 .nav-next {
     width: 50%;
@@ -20,13 +24,11 @@
 }
 
 #primary {
-    float: left;
-    width: 70%;
+    @include span-columns(8.5);
 }
 
 #secondary {
-    float: right;
-    width: 26%;
+    @include span-columns(3.5);
 }
 
 @import "navigation";

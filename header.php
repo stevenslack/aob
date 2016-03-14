@@ -71,9 +71,13 @@
 		<!-- /.inner-wrap -->
 	</header><!-- #masthead -->
 
-	<?php get_template_part( 'templates/main', 'navigation' ); ?>
+	<?php
+		get_template_part( 'templates/main', 'navigation' );
 
-	<?php get_template_part( 'templates/front', 'slider' ); ?>
+		if ( is_front_page() ) {
+			get_template_part( 'templates/front', 'slider' );
+		}
+	?>
 
 	<!-- Site Content -->
 	<div id="content" class="site-content">
