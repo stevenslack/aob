@@ -45,9 +45,9 @@
 			<div class="site-branding">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 					<?php get_template_part( 'templates/logo' ); ?>
-					<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+					<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
 				</a><br>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+				<h2 class="site-description"><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
 			</div>
 
 			<div class="social-head">
@@ -72,6 +72,8 @@
 	</header><!-- #masthead -->
 
 	<?php get_template_part( 'templates/main', 'navigation' ); ?>
+
+	<?php get_template_part( 'templates/front', 'slider' ); ?>
 
 	<!-- Site Content -->
 	<div id="content" class="site-content">

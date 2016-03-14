@@ -48,6 +48,7 @@
 
 // fixed alignment issue and adds some padding to the editor
 body#tinymce.wp-editor {
+    background: white;
 	padding:2% !important;
 	.alignleft,.alignright, .alignnone {
 		margin-top: 1em;

@@ -37,12 +37,14 @@ function aob_post_type_select( $query_args ) {
         'post_type' => 'post'
     ) );
 
-    $post_options = array();
-
     $posts = get_posts( $args );
 
-    $post_options = wp_list_pluck( $posts, 'post_title' );
-    $post_options = array( '' => __( '-- Select --', 'aob' ) ) + $post_options;
+    $post_options = array( '' => __( '-- Select --', 'aob' ) );
+    if ( $posts ) {
+        foreach ( $posts as $post ) {
+          $post_options[ $post->ID ] = $post->post_title;
+        }
+    }
 
     return $post_options;
 }

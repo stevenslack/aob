@@ -5,6 +5,20 @@
     }
 }
 
+.nav-previous,
+.nav-next {
+    width: 50%;
+}
+
+.nav-next {
+    float: right;
+    text-align: right;
+}
+
+.nav-previous {
+    float: left;
+}
+
 #primary {
     float: left;
     width: 70%;

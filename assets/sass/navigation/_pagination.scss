@@ -31,11 +31,41 @@
   }
 
   a:hover, .current {
-      background: $dark-red;
-      color: white;
+    background: $dark-red;
+    color: white;
   }
+}
+
+.nav-links {
+  @include clearfix;
+  width: 100%;
+}
+
+.nav-next {
+    &:after {
+        font-family: "Genericons";
+        color: $grey;
+        vertical-align: middle;
+        font-size: 22px;
+        line-height: 1.6;
+        margin-left: em(5);
+        text-decoration: inherit;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        speak: none;
+    }
 }
 
 .post-navigation {
   margin-bottom: 2em;
+
+  .nav-next:after {
+    content: '\f429';
+  }
+
+  .nav-previous:before {
+    content: '\f430';
+  }
 }
+

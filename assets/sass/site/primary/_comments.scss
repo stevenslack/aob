@@ -33,7 +33,6 @@ $post-author-border: rgba(153,55,0,0.75);
 	}
 }
 
-
 .bypostauthor {
 
 	.comment-meta img {
@@ -51,7 +50,7 @@ $post-author-border: rgba(153,55,0,0.75);
 
 .comment-meta {
 	height: 60px;
-	
+
 	img {
 		float:left;
 		position: relative;
@@ -67,6 +66,14 @@ $post-author-border: rgba(153,55,0,0.75);
 			@include genericon-rules;
 		}
 	}
+
+	.edit-link {
+		display: inline;
+
+		&:before {
+			display: none;
+		}
+	}
 }
 
 .comment-link {
@@ -78,7 +85,7 @@ $post-author-border: rgba(153,55,0,0.75);
 	@include font-size(14);
 	&:before {
 		content: '\f411';
-		
+
 		@include genericon-rules;
 	}
 }
@@ -124,7 +131,7 @@ $post-author-border: rgba(153,55,0,0.75);
 		left:17px;
 		@include triangle(28px, $border-color, up);
 	}
-	p { 
+	p {
 		&:first-of-type {
 			margin-top: 0;
 		}
@@ -150,7 +157,7 @@ $post-author-border: rgba(153,55,0,0.75);
  * Comment Reply Form
  */
 .comment-form-author,
-.comment-form-email, 
+.comment-form-email,
 .comment-form-url,
 .comment-form-comment {
 	label:before {
@@ -189,7 +196,7 @@ $post-author-border: rgba(153,55,0,0.75);
 		&:before {
 			content: '\f300';
 		}
-	}	
+	}
 }
 
 span.required {

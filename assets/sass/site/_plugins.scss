@@ -1,0 +1,13 @@
+
+.soliloquy-container {
+    ul li:before {
+        display:none;
+    }
+}
+
+.aob-slider-container {
+    .soliloquy-container {
+        width: 100%;
+        max-width: none !important;
+    }
+}

@@ -5,45 +5,88 @@
  * @package Pixie Campbell
  */
 
-function ashevilleonbikes_theme_options_init() {
+function aob_options_init() {
     register_setting(
-        'ashevilleonbikes_options',                 // Options group, see settings_fields() call in ashevilleonbikes_theme_options_render_page()
-        'ashevilleonbikes_theme_options',           // Database option, see ashevilleonbikes_get_theme_options()
+        'ashevilleonbikes_options',                 // Options group, see settings_fields() call in aob_render_page()
+        'ashevilleonbikes_theme_options',           // Database option, see aob_get_theme_options()
         'ashevilleonbikes_theme_options_validate'   // The sanitization callback, see ashevilleonbikes_theme_options_validate()
     );
 
     // Register Social Settings Group
     add_settings_section( 'social', 'Social Settings', '__return_false', 'theme_options' );
 
-        add_settings_field( 'facebook_input', __( 'Facebook page name:', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_facebook_input', 'theme_options', 'social' );
-        add_settings_field( 'twitter_input', __( 'Twitter username:', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_twitter_input', 'theme_options', 'social' );
-        add_settings_field( 'google_input', __( 'Google Plus user ID:', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_field_google_input', 'theme_options', 'social' );
+        add_settings_field(
+            'facebook_input',
+            __( 'Facebook page name:', 'aob' ),
+            'aob_settings_facebook_input',
+            'theme_options',
+            'social'
+        );
+        add_settings_field(
+            'twitter_input',
+            __( 'Twitter username:', 'aob' ),
+            'ashevilleonbikes_settings_twitter_input',
+            'theme_options',
+            'social'
+        );
+        add_settings_field(
+            'google_input',
+            __( 'Google Plus user ID:', 'aob' ),
+            'ashevilleonbikes_settings_field_google_input',
+            'theme_options',
+            'social'
+        );
+        add_settings_field(
+            'insta_input',
+            __( 'Instagram user name:', 'aob' ),
+            'ashevilleonbikes_settings_field_insta_input',
+            'theme_options',
+            'social'
+     );
 
     // Additional Settings
-    add_settings_section( 'aob_urls', 'Additional Settings', '__return_false', 'theme_options' );
+    add_settings_section( 'aob_urls', 'Donation and Newsletter Fields', '__return_false', 'theme_options' );
 
-        add_settings_field( 'donate_url', __( 'Donation URL', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_donate', 'theme_options', 'aob_urls' );
-        add_settings_field( 'newsletter_url', __( 'Newsletter Sign Up URL', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_newsletter', 'theme_options', 'aob_urls' );
-        add_settings_field( 'email_address', __( 'Enter Your Email Address', 'ashevilleonbikes' ), 'ashevilleonbikes_settings_email', 'theme_options', 'aob_urls' );
+        add_settings_field(
+            'donate_url',
+            __( 'Donation URL', 'aob' ),
+            'ashevilleonbikes_settings_donate',
+            'theme_options',
+            'aob_urls'
+        );
+        add_settings_field(
+            'newsletter_url',
+            __( 'Newsletter Sign Up URL', 'aob' ),
+            'ashevilleonbikes_settings_newsletter',
+            'theme_options',
+            'aob_urls'
+        );
+        add_settings_field(
+            'email_address',
+            __( 'Enter Your Email Address', 'aob' ),
+            'ashevilleonbikes_settings_email',
+            'theme_options',
+            'aob_urls'
+        );
 }
 
-add_action( 'admin_init', 'ashevilleonbikes_theme_options_init' );
+add_action( 'admin_init', 'aob_options_init' );
 
 /**
  * Change the capability required to save the 'ashevilleonbikes_options' options group.
  *
- * @see ashevilleonbikes_theme_options_init() First parameter to register_setting() is the name of the options group.
- * @see ashevilleonbikes_theme_options_add_page() The edit_theme_options capability is used for viewing the page.
+ * @see aob_options_init() First parameter to register_setting() is the name of the options group.
+ * @see aob_add_options_page() The edit_theme_options capability is used for viewing the page.
  *
  * @param string $capability The capability used for the page, which is manage_options by default.
  * @return string The capability to actually use.
  */
 
-function ashevilleonbikes_option_page_capability( $capability ) {
+function aob_options_caps( $capability ) {
     return 'edit_theme_options';
 }
 
-add_filter( 'option_page_capability_ashevilleonbikes_options', 'ashevilleonbikes_option_page_capability' );
+add_filter( 'option_page_capability_aob_options', 'aob_options_caps' );
 
 /**
  * Add our theme options page to the admin menu.
@@ -52,23 +95,24 @@ add_filter( 'option_page_capability_ashevilleonbikes_options', 'ashevilleonbikes
  *
  * @since ashevilleonbikes 1.0
  */
-function ashevilleonbikes_theme_options_add_page() {
-    $theme_page = add_theme_page(
-        __( 'Social Settings', 'ashevilleonbikes' ),    // Name of page
-        __( 'Social Settings', 'ashevilleonbikes' ),    // Label in menu
-        'edit_theme_options',                       // Capability required
-        'theme_options',                            // Menu slug, used to uniquely identify the page
-        'ashevilleonbikes_theme_options_render_page'    // Function that renders the options page
+function aob_add_options_page() {
+    $theme_page = add_menu_page(
+        __( 'AoB Settings', 'aob' ),                  // Page Title
+        __( 'AoB Settings', 'aob' ),                  // Menu Title
+        'edit_theme_options',                         // Capability
+        'aob-options',                                // Menu slug
+        'aob_render_page', // Function that renders the options page
+        'dashicons-heart'
     );
 }
-add_action( 'admin_menu', 'ashevilleonbikes_theme_options_add_page' );
+add_action( 'admin_menu', 'aob_add_options_page' );
 
 /**
  * Returns the options array for ashevilleonbikes.
  *
  * @since ashevilleonbikes 1.0
  */
-function ashevilleonbikes_get_theme_options() {
+function aob_get_theme_options() {
     $saved = (array) get_option( 'ashevilleonbikes_theme_options' );
     $defaults = array(
         'facebook_input'    => '',
@@ -90,31 +134,41 @@ function ashevilleonbikes_get_theme_options() {
 /**
  * Renders the Facebook input setting field.
  */
-function ashevilleonbikes_settings_facebook_input() {
-    $options = ashevilleonbikes_get_theme_options();
+function aob_settings_facebook_input() {
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[facebook_input]" id="facebook-input" size="30" value="<?php echo esc_attr( $options['facebook_input'] ); ?>" />
-    <label class="description" for="facebook-input"><?php _e( 'Example: http://facebook.com/<strong>YourFacebookPageName</strong>', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="facebook-input"><?php _e( 'Example: http://facebook.com/<strong>YourFacebookPageName</strong>', 'aob' ); ?></label>
     <?php
 }
 /**
  * Renders the Twitter input setting field.
  */
 function ashevilleonbikes_settings_twitter_input() {
-    $options = ashevilleonbikes_get_theme_options();
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[twitter_input]" id="twitter-input" size="30" value="<?php echo esc_attr( $options['twitter_input'] ); ?>" />
-    <label class="description" for="twitter-input"><?php _e( '', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="twitter-input"><?php _e( '', 'aob' ); ?></label>
     <?php
 }
 /**
- * Renders the phone number input setting field.
+ * Renders the Google+ input setting field.
  */
 function ashevilleonbikes_settings_field_google_input() {
-    $options = ashevilleonbikes_get_theme_options();
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[google_input]" id="google_input" size="30" value="<?php echo esc_attr( $options['google_input'] ); ?>" />
-    <label class="description" for="google_input"><?php _e( '', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="google_input"><?php _e( '', 'aob' ); ?></label>
+    <?php
+}
+/**
+ * Renders the Instagram input setting field.
+ */
+function ashevilleonbikes_settings_field_insta_input() {
+    $options = aob_get_theme_options();
+    ?>
+    <input type="text" name="ashevilleonbikes_theme_options[insta_input]" id="insta_input" size="30" value="<?php echo esc_attr( $options['insta_input'] ); ?>" />
+    <label class="description" for="insta_input"><?php _e( '', 'aob' ); ?></label>
     <?php
 }
 
@@ -128,26 +182,26 @@ function ashevilleonbikes_settings_field_google_input() {
  * Renders the phone number input setting field.
  */
 function ashevilleonbikes_settings_donate() {
-    $options = ashevilleonbikes_get_theme_options();
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[donate_url]" id="donate-url" size="30" value="<?php echo esc_attr( $options['donate_url'] ); ?>" />
-    <label class="description" for="donate-url"><?php _e( '', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="donate-url"><?php _e( '', 'aob' ); ?></label>
     <?php
 }
 
 function ashevilleonbikes_settings_newsletter() {
-    $options = ashevilleonbikes_get_theme_options();
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[newsletter_url]" id="newsletter-url" size="30" value="<?php echo esc_attr( $options['newsletter_url'] ); ?>" />
-    <label class="description" for="newsletter-url"><?php _e( '', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="newsletter-url"><?php _e( '', 'aob' ); ?></label>
     <?php
 }
 
 function ashevilleonbikes_settings_email() {
-    $options = ashevilleonbikes_get_theme_options();
+    $options = aob_get_theme_options();
     ?>
     <input type="text" name="ashevilleonbikes_theme_options[email_address]" id="email-address" size="30" value="<?php echo esc_attr( $options['email_address'] ); ?>" />
-    <label class="description" for="email-address"><?php _e( 'Enter your email address for use in the email icon in the header and footer.', 'ashevilleonbikes' ); ?></label>
+    <label class="description" for="email-address"><?php _e( 'Enter your email address for use in the email icon in the header and footer.', 'aob' ); ?></label>
     <?php
 }
 
@@ -156,12 +210,11 @@ function ashevilleonbikes_settings_email() {
  *
  * @since ashevilleonbikes 1.0
  */
-function ashevilleonbikes_theme_options_render_page() {
+function aob_render_page() {
     ?>
     <div class="wrap">
         <?php screen_icon(); ?>
-        <?php $theme_name = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_current_theme(); ?>
-        <h2><?php printf( __( '%s Social Settings', 'ashevilleonbikes' ), $theme_name ); ?></h2>
+        <h2><?php esc_html_e( 'Asheville on Bikes Theme Settings', 'aob' ); ?></h2>
         <?php settings_errors(); ?>
 
         <form method="post" action="options.php">
@@ -179,7 +232,7 @@ function ashevilleonbikes_theme_options_render_page() {
 /**
  * Sanitize and validate form input. Accepts an array, return a sanitized array.
  *
- * @see ashevilleonbikes_theme_options_init()
+ * @see aob_options_init()
  * @todo set up Reset Options action
  *
  * @param array $input Unknown values.
@@ -198,6 +251,9 @@ function ashevilleonbikes_theme_options_validate( $input ) {
 
     if ( isset( $input['google_input'] ) && ! empty( $input['google_input'] ) )
         $output['google_input'] = wp_filter_nohtml_kses( $input['google_input'] );
+
+    if ( isset( $input['insta_input'] ) && ! empty( $input['insta_input'] ) )
+        $output['insta_input'] = wp_filter_nohtml_kses( $input['insta_input'] );
 
     if ( isset( $input['donate_url'] ) && ! empty( $input['donate_url'] ) )
         $output['donate_url'] = esc_url_raw( wp_filter_nohtml_kses( $input['donate_url'] ) );

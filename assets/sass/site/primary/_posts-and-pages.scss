@@ -53,6 +53,10 @@ article.hentry {
     border-bottom: 1px solid #F0ECE1;
     padding-bottom: 0.5em;
     margin-bottom:0.5em;
+
+    .entry-date {
+        display: inline;
+    }
 }
 
 .entry-title {
@@ -71,7 +75,8 @@ article.hentry {
 .tags-links,
 .comments-link,
 .edit-link,
-.entry-date {
+.entry-date,
+.nav-previous {
     display: block;
 
     &:before {

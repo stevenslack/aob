@@ -65,8 +65,14 @@ function _aob_setup() {
 endif; // _aob_setup
 add_action( 'after_setup_theme', '_aob_setup' );
 
+// image sizes used for scaling
+add_image_size( 'image-1', 1400, 1400 );
+add_image_size( 'image-2', 1100, 1100 );
+add_image_size( 'image-3', 800, 800 );
+add_image_size( 'image-4', 500, 500 );
+
 // post and page featured image
-add_image_size( 'post-thumb', 1100, 618 );
+add_image_size( 'post-thumb', 1100, 619 );
 // the featured image on the blog page 16:9 ratio
 add_image_size( 'blog-thumb', 771, 433 );
 
@@ -198,8 +204,23 @@ function aob_soliloquy_whitelabel( $translated_text, $source_text, $domain ) {
     }
 
     return $translated_text;
-
 }
+
+
+/**
+ * Soliloquy
+ */
+add_filter( 'soliloquy_defaults', 'aob_soliloquy_default_settings', 20, 2 );
+function aob_soliloquy_default_settings( $defaults, $post_id ) {
+    $defaults['slider_width']  = 1400; // Slider width.
+    $defaults['slider_height'] = 787;  // Slider height.
+    $defaults['transition'] = 'horizontal';
+    $defaults['arrows'] = 0;
+    $defaults['auto'] = 0;
+
+    return $defaults;
+}
+
 
 /**
  * CUSTOM LOGIN PAGE
