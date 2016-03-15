@@ -142,11 +142,6 @@ function prefix_add_ie8_style_sheet() {
 }
 
 /**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
@@ -223,9 +218,9 @@ add_filter( 'soliloquy_defaults', 'aob_soliloquy_default_settings', 20, 2 );
 function aob_soliloquy_default_settings( $defaults, $post_id ) {
     $defaults['slider_width']  = 1400; // Slider width.
     $defaults['slider_height'] = 787;  // Slider height.
-    $defaults['transition'] = 'horizontal';
-    $defaults['arrows'] = 0;
-    $defaults['auto'] = 0;
+    $defaults['transition']    = 'horizontal';
+    $defaults['arrows']        = 0;
+    $defaults['auto']          = 0;
 
     return $defaults;
 }

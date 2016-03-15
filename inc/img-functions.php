@@ -143,7 +143,7 @@ function the_responsive_featured_image( $inner_content = null ) {
 
     global $post;
 
-    if( isset ( $post->ID ) && has_post_thumbnail( $post->ID ) ) :
+    if ( isset ( $post->ID ) && has_post_thumbnail( $post->ID ) ) :
 
         // get the attachment ID
         $attachment_id = get_post_thumbnail_id( $post->ID );
