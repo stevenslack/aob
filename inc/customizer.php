@@ -6,6 +6,20 @@
  */
 
 /**
+ * Clean Up customizer
+ *
+ * @param  $wp_customize
+ */
+function remove_customizer_settings( $wp_customize ) {
+
+    // remove background image and background color
+    $wp_customize->remove_section( 'background_image' );
+    $wp_customize->remove_setting( 'background_color' );
+
+}
+add_action( 'customize_register', 'remove_customizer_settings', 20 );
+
+/**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
@@ -82,6 +96,30 @@ function aob_customizer_settings( $wp_customize ) {
             'section'   => 'front_page_settings',
             'type'      => 'select',
             'choices'   => aob_post_type_select( array( 'post_type' => 'soliloquy' ) ),
+            'priority'  => 0
+        )
+    );
+
+    /**
+     * Color Settings
+     */
+    $wp_customize->add_setting(
+        'header_color',
+        array(
+            'default'   => 'light',
+            'transport' => 'refresh',
+        )
+    );
+    $wp_customize->add_control(
+        'header_color',
+        array(
+            'label'     => __( 'Header background color', 'aob' ),
+            'section'   => 'colors',
+            'type'      => 'select',
+            'choices'   => array(
+                'light' => __( 'Default (light)', 'aob' ),
+                'dark' => __( 'Dark', 'aob' ),
+            ),
             'priority'  => 0
         )
     );

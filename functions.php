@@ -177,6 +177,15 @@ require get_template_directory() . '/inc/theme-options.php';
 require get_template_directory() . '/inc/class-drop-walker-nav.php';
 
 /**
+ * Custom Meta Boxes - CMB2 v2.2.1
+ */
+if ( file_exists( get_template_directory() . '/inc/cmb2/init.php' ) ) {
+  require_once get_template_directory() . '/inc/cmb2/init.php';
+} elseif ( file_exists( get_template_directory() . '/inc/CMB2/init.php' ) ) {
+  require_once get_template_directory() . '/inc/CMB2/init.php';
+}
+
+/**
  * White Label Soliloquy
  */
 add_filter( 'gettext', 'aob_soliloquy_whitelabel', 10, 3 );
