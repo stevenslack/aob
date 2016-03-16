@@ -42,20 +42,6 @@ function _aob_setup() {
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 	) );
 
-	/*
-	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'quote', 'link',
-	) );
-
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( '_aob_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-
 	// adds theme support for title tag
 	add_theme_support( 'title-tag' );
 
@@ -72,9 +58,9 @@ add_image_size( 'image-3', 800, 800 );
 add_image_size( 'image-4', 500, 500 );
 
 // post and page featured image
-add_image_size( 'post-thumb', 1100, 619 );
+add_image_size( 'post-thumb', 1313, 738 );
 // the featured image on the blog page 16:9 ratio
-add_image_size( 'blog-thumb', 771, 433 );
+add_image_size( 'blog-thumb', 921, 518 );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.

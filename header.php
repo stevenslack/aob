@@ -22,6 +22,12 @@
 	<!-- Site Header -->
 	<header id="masthead" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
 		<div class="inner-wrap">
+			<div class="site-branding">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part( 'templates/logo' ); ?></a>
+				<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
+				<h2 class="site-description"><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
+			</div>
+
 			<?php
 				$aob_options = get_option( 'ashevilleonbikes_theme_options' );
 				if ( ! empty( $aob_options['donate_url'] ) || ! empty( $aob_options['newsletter_url'] ) ) :
@@ -35,12 +41,6 @@
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-
-			<div class="site-branding">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part( 'templates/logo' ); ?></a>
-				<h1><span class="screen-reader-text"><?php bloginfo( 'name' ); ?></span></h1>
-				<h2 class="site-description"><span class="screen-reader-text"><?php bloginfo( 'description' ); ?></span></h2>
-			</div>
 
 			<div class="social-head social">
 				<?php if ( ! empty( $aob_options['google_input'] ) && $google_plus = $aob_options['google_input'] ) : ?>

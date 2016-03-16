@@ -16,12 +16,11 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) : ?>
+		<?php if ( have_posts() ) : $i = 0; // iterate through each post and count ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); $i++; ?>
 
-				<?php get_template_part( 'templates/content', get_post_format() ); ?>
+				<?php aob_get_template_part( 'templates/content', array( 'i' => $i ) ); ?>
 
 			<?php endwhile; ?>
 

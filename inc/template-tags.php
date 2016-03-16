@@ -93,6 +93,18 @@ function _aob_posted_on() {
 }
 endif;
 
+/**
+ * Primary Categories for blog posts
+ *
+ * @return string
+ */
+function aob_categories( $class_name = 'cat-links' ) {
+	/* translators: used between list items, there is a space after the comma */
+	$categories_list = get_the_category_list( __( ', ', 'aob' ) );
+	if ( $categories_list && _aob_categorized_blog() ) {
+		printf( '<span class="%1$s">' . __( '%2$s', 'aob' ) . '</span>', $class_name, $categories_list );
+	}
+}
 
 if ( ! function_exists( '_aob_entry_footer' ) ) :
 /**
@@ -101,11 +113,7 @@ if ( ! function_exists( '_aob_entry_footer' ) ) :
 function _aob_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'aob' ) );
-		if ( $categories_list && _aob_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( '%1$s', 'aob' ) . '</span>', $categories_list );
-		}
+		aob_categories();
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', __( ', ', 'aob' ) );
 		if ( $tags_list ) {
@@ -120,7 +128,6 @@ function _aob_entry_footer() {
 	edit_post_link( __( 'Edit', 'aob' ), '<span class="edit-link">', '</span>' );
 }
 endif;
-
 
 /**
  * Returns true if a blog has more than 1 category.
@@ -162,3 +169,137 @@ function _aob_category_transient_flusher() {
 }
 add_action( 'edit_category', '_aob_category_transient_flusher' );
 add_action( 'save_post',     '_aob_category_transient_flusher' );
+
+
+/**
+ * Retrieve a post excerpt whether or not you're inside The Loop
+ * @param WP_Post|int $post A WP_Post object or post ID
+ * @param int $length Optional number of words, if excerpt is being trimmed from post_content
+ * @return string The excerpt
+ */
+function aob_get_the_excerpt( $post, $length = 0 ) {
+	// Always get the post object
+	if ( is_numeric( $post ) ) {
+		$post = get_post( $post );
+	}
+
+	// If the excerpt is set, use it. Otherwise, use the post content.
+	if ( ! empty( $post->post_excerpt ) ) {
+		$excerpt = $post->post_excerpt;
+	} else {
+		$excerpt = $post->post_content;
+		// Use the same logic as wp_trim_excerpt to finalize
+		$excerpt = strip_shortcodes( $excerpt );
+		$excerpt = apply_filters( 'the_content', $excerpt );
+		$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+		$excerpt_length = ( is_numeric( $length ) && $length > 0 ) ? $length : apply_filters( 'excerpt_length', 55 );
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$excerpt = wp_trim_words( $excerpt, $excerpt_length, $excerpt_more );
+	}
+
+	return $excerpt;
+}
+
+if ( ! function_exists( 'aob_get_template_part' ) ) :
+
+	/**
+	 * Get a template part while setting a global variable that can be read from within the template.
+	 *
+	 * $name can be ommitted, and $variables can optionally be the second function argument. e.g.
+	 *      aob_get_template_part( 'sidebar', array( 'image_size' => 'thumbnail' ) )
+	 *
+	 * @param string $slug Template slug. @see get_template_part().
+	 * @param string $name Optional. Template name. @see get_template_part().
+	 * @param array $variables Optional. key => value pairs you want to access from the template.
+	 * @return void
+	 */
+	function aob_get_template_part( $slug, $name = null, $variables = array() ) {
+		global $aob_vars, $post;
+		if ( ! is_array( $aob_vars ) ) {
+			$aob_vars = array();
+		}
+
+		list( $name, $variables ) = _aob_fix_template_part_args( $name, $variables );
+
+		// We add the variables to the end of the array, as variables will
+		// always be pulled from the top (the currently activate template). This
+		// allows us to nest templates without crossing our streams.
+		$aob_vars[] = $variables;
+
+		// We store the current global post to ensure that our template part
+		// doesn't modify it.
+		$current_post = $post;
+
+		get_template_part( $slug, $name );
+
+		// If our template part changed the global post, we'll reset it to what
+		// it was before loading the template part. Note that we're not calling
+		// wp_reset_postdata() because $post may not have been the current post
+		// from the global query.
+		if ( $current_post !== $post ) {
+			$post = $current_post;
+
+			if ( $post instanceof WP_Post ) {
+				setup_postdata( $post );
+			}
+		}
+
+		// Lastly, we pop the variables off the top of the array
+		array_pop( $aob_vars );
+	}
+
+endif;
+
+
+if ( ! function_exists( 'aob_get_var' ) ) :
+
+	/**
+	 * Get a value from the global aob_vars array.
+	 *
+	 * @param  string $key The key from the variables.
+	 * @param  mixed $default Optional. If the key is not in $aob_vars, the function returns this value. Defaults to null.
+	 * @return mixed Returns $default.
+	 */
+	function aob_get_var( $key, $default = null ) {
+		global $aob_vars;
+		if ( empty( $aob_vars ) ) {
+			return $default;
+		}
+
+		$current_template = end( $aob_vars );
+		if ( isset( $current_template[ $key ] ) ) {
+			return $current_template[ $key ];
+		}
+		return $default;
+	}
+
+endif;
+
+if ( ! function_exists( '_aob_fix_template_part_args' ) ) {
+
+	/**
+	 * Sort out `$name` and `$variables` for all of the custom template part
+	 * functions.
+	 *
+	 * `$name` comes before `$variables` in the argument order, but is optional.
+	 * This helper determines if `$name` was actually provided or not.
+	 *
+	 * @access private
+	 *
+	 * @param  mixed $name Technically, `$name` should be a string or null.
+	 *                     However, because it's optional, it might be an array.
+	 *                     In that case, it will be reset to null and its value
+	 *                     transferred to `$variables`.
+	 * @param  array $variables Variables to pass to template partials.
+	 * @return array In the format: `array( $name, $variables )`. This can be
+	 *               used with `list()` very easily.
+	 */
+	function _aob_fix_template_part_args( $name, $variables ) {
+		if ( is_array( $name ) ) {
+			$variables = $name;
+			$name = null;
+		}
+
+		return array( $name, $variables );
+	}
+}
