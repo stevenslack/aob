@@ -11,6 +11,7 @@
 						'menu_id'        => 'nav-primary',
 						'menu_class'     => 'nav-menu',
 						'fallback_cb'    => '',
+						'items_wrap'     => '<ul id="%1$s" class="%2$s">' . aob_header_buttons() . '%3$s</ul>',
 						"walker"         => new Drop_Menu_Walker(),
 					)
 				); ?>

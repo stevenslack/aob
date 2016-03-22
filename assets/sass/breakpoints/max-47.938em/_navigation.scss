@@ -6,22 +6,25 @@
 .nav-toggle {
     display: block;
     float: right;
-    padding: 1em 1.5em;
+    padding: 0.8em 1.5em;
     cursor: pointer;
     text-decoration: none;
-    border: 1px solid #ccc;
-    background-color: #fafafa;
+    background-color: transparent;
+    @include font-size(25);
+    color: #444;
 
     &:hover,
     &:focus {
         text-decoration: none;
         color: #333;
+        background-color: transparent;
     }
 
     .burger-icon {
         display: inline-block;
         margin-left: .3em;
-        vertical-align: middle; 
+        margin-top: 5px;
+        vertical-align: middle;
     }
 
     &.active .burger-icon {
@@ -79,7 +82,7 @@
 			}
 			a {
 				padding-left:2em;
-				width: 100%;	
+				width: 100%;
 			}
 			ul {
 				li {
@@ -88,7 +91,7 @@
 						padding-left:3em;
 					}
 				}
-			} // grandchild 
+			} // grandchild
 		} // end list element
 	}
 }
@@ -112,11 +115,11 @@
 		text-align: left;
 		/*  CSS3 animation for when menu content expands */
 		@include transition (max-height 350ms ease-in-out);
-		
+
 		&.active {
 			max-height: 99em;
 			@include transition (max-height 350ms ease-in-out);
-		}	
+		}
 	}
 	.menu-item-has-children > a {
 		padding-right:3em;

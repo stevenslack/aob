@@ -70,7 +70,7 @@ add_image_size( 'blog-thumb', 921, 518 );
  * @global int $content_width
  */
 function _aob_content_width() {
-	$GLOBALS['content_width'] = apply_filters( '_aob_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( '_aob_content_width', 1313 );
 }
 add_action( 'after_setup_theme', '_aob_content_width', 0 );
 
@@ -110,60 +110,30 @@ function _aob_scripts() {
 }
 add_action( 'wp_enqueue_scripts', '_aob_scripts' );
 
-add_action( 'wp_enqueue_scripts', 'prefix_add_ie8_style_sheet', 200 );
-
-
-/**
- * Enqueue a IE-specific style sheet.
- *
- * Add a style sheet for everyone, then mark it as conditional to IE8 or below.
- *
- * @author Gary Jones
- * @link   http://code.garyjones.co.uk/enqueued-style-sheet-extras/
- */
-function prefix_add_ie8_style_sheet() {
-	global $wp_styles;
-	wp_enqueue_style( 'ie8-styles', get_stylesheet_directory_uri() . '/assets/css/ie8-style.css', array(), '1.3' );
-	$wp_styles->add_data( 'ie8-styles', 'conditional', 'lte IE 8' );
-}
-
 /**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Custom functions that act independently of the theme templates.
- */
 require get_template_directory() . '/inc/extras.php';
-
-/**
- * Customizer additions.
- */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
 require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * Theme Options
- */
 require get_template_directory() . '/inc/theme-options.php';
-
-/**
- * Get the custom nav walker for the primary menu
- */
 require get_template_directory() . '/inc/class-drop-walker-nav.php';
 
 /**
  * Custom Meta Boxes - CMB2 v2.2.1
  */
 if ( file_exists( get_template_directory() . '/inc/cmb2/init.php' ) ) {
+
   require_once get_template_directory() . '/inc/cmb2/init.php';
+  require get_template_directory() . '/inc/cmb2-conditionals.php';
+  require get_template_directory() . '/inc/custom-fields.php';
+
 } elseif ( file_exists( get_template_directory() . '/inc/CMB2/init.php' ) ) {
+
   require_once get_template_directory() . '/inc/CMB2/init.php';
+  require get_template_directory() . '/inc/cmb2-conditionals.php';
+  require get_template_directory() . '/inc/custom-fields.php';
 }
 
 /**
@@ -209,6 +179,17 @@ function aob_soliloquy_default_settings( $defaults, $post_id ) {
     $defaults['auto']          = 0;
 
     return $defaults;
+}
+
+add_filter( 'soliloquy_output_caption', 'soliloquy_title_before_caption', 10, 5 );
+function soliloquy_title_before_caption( $caption, $id, $slide, $data, $i ) {
+
+	// Check if current slide has a title specified
+	if ( isset( $slide['title'] ) && !empty( $slide['title'] ) ) {
+		$caption = '<h4 class="title">' . $slide['title'] . '</h4>';
+                $caption .= '<div class="caption">' . $slide['caption'] . '</div>';
+        }
+        return $caption;
 }
 
 

@@ -7,6 +7,12 @@
 
 .site-branding {
     float: left;
+    margin: 1em 0;
+
+    svg {
+        float: left;
+        margin-right: em(17);
+    }
 }
 
 .donate-signup {

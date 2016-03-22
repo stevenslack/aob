@@ -303,3 +303,21 @@ if ( ! function_exists( '_aob_fix_template_part_args' ) ) {
 		return array( $name, $variables );
 	}
 }
+
+function aob_header_buttons() {
+	// get the options
+	$aob_options = get_option( 'ashevilleonbikes_theme_options' );
+	$out = '';
+
+	if ( ! empty( $aob_options['donate_url'] ) || ! empty( $aob_options['newsletter_url'] ) ) {
+
+		if ( ! empty( $aob_options['donate_url'] ) && $donate = $aob_options['donate_url'] ) {
+			$out .= sprintf( '<a href="%s" class="donate" target="_blank">%s</a>', esc_url( $donate ), esc_html( 'DONATE', 'aob' ) );
+		}
+		if ( ! empty( $aob_options['newsletter_url'] ) && $newsletter = $aob_options['newsletter_url'] ) {
+			$out .= sprintf( '<a href="%s" class="newsletter-signup" target="_blank">%s</a>', esc_url( $newsletter ), esc_html( 'JOIN', 'aob' ) );
+		}
+
+		return sprintf( '<div class="donate-signup">%s</div>', $out );
+	}
+}
