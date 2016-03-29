@@ -109,7 +109,7 @@ function aob_banner_options() {
 		'type' => 'file',
 		'attributes'       => array(
 			'data-conditional-id'    => $prefix . 'banner_layout',
-			'data-conditional-value' => 'hero',
+			'data-conditional-value' => json_encode( array( 'hero', 'hero_logo' ) )
 		)
 	) );
 

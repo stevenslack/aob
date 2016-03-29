@@ -4,3 +4,18 @@
         background-color: $content-bg;
     }
 }
+
+.single, .page-template-default {
+	.site-content {
+		.inner-wrap {
+			max-width: em(1000);
+		}
+	}
+}
+
+.page-template-default {
+	article.hentry {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+}

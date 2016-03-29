@@ -94,16 +94,6 @@ $post-author-border: rgba(153,55,0,0.75);
 	display: block;
 	font-weight: 700;
 	font-style: normal;
-
-	a {
-
-	}
-
-	&:before {
-		content: '\f304';
-		@include font-size(14);
-		@include genericon-rules;
-	}
 }
 
 

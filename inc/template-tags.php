@@ -304,6 +304,11 @@ if ( ! function_exists( '_aob_fix_template_part_args' ) ) {
 	}
 }
 
+/**
+ * Header button output
+ *
+ * @return string
+ */
 function aob_header_buttons() {
 	// get the options
 	$aob_options = get_option( 'ashevilleonbikes_theme_options' );
@@ -319,5 +324,49 @@ function aob_header_buttons() {
 		}
 
 		return sprintf( '<div class="donate-signup">%s</div>', $out );
+	}
+}
+
+function aob_get_social() {
+	$aob_options = get_option( 'ashevilleonbikes_theme_options' );
+
+	$social = array();
+
+	if ( empty( $aob_options ) ) {
+		return false;
+	}
+
+	if ( ! empty( $aob_options['facebook_input'] ) ) {
+		$social['facebook'] = $aob_options['facebook_input'];
+	}
+
+	if ( ! empty( $aob_options['google_input'] ) ) {
+		$social['google+'] = $aob_options['google_input'];
+	}
+
+	if ( ! empty( $aob_options['twitter_input'] ) ) {
+		$social['twitter'] = $aob_options['twitter_input'];
+	}
+
+	if ( ! empty( $aob_options['insta_input'] ) ) {
+		$social['instagram'] = $aob_options['insta_input'];
+	}
+
+	if ( ! empty( $aob_options['email_address'] ) ) {
+		$social['email'] = $aob_options['email_address'];
+	}
+
+	if ( ! empty( $social ) ) {
+		return $social;
+	} else {
+		return false;
+	}
+}
+
+function aob_has_social() {
+	if ( false === aob_get_social() ) {
+		return false;
+	} else {
+		return true;
 	}
 }
