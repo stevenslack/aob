@@ -111,7 +111,24 @@ article.hentry {
 }
 
 .cat-links,
-.tags-links,
+.tags-links {
+    display: block;
+    margin: 1em 0;
+
+    a {
+        display: inline-block;
+        padding: 0 0.5em;
+        margin: 0 0.2em 0 0;
+        color: $body;
+        background-color: $body_bg;
+
+        &:hover,
+        &:focus {
+            color: lighten( $body, 20 );
+        }
+    }
+}
+
 .comments-link,
 .edit-link,
 .entry-date,
@@ -131,14 +148,6 @@ article.hentry {
         -webkit-font-smoothing: antialiased;
         speak: none;
     }
-}
-
-.cat-links:before {
-    content: "\f301";
-}
-
-.tags-links:before {
-    content: "\f302";
 }
 
 .comments-link:before {

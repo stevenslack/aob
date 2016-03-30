@@ -41,11 +41,20 @@
   width: 100%;
 }
 
-.nav-next {
-    &:after {
+.nav-links a {
+    background-color: $body_bg;
+    color: $body;
+
+    &:hover,
+    &:focus {
+      background-color: darken( $body_bg, 5 );
+    }
+
+    &:after,
+    &:before {
         font-family: "Genericons";
         color: $grey;
-        vertical-align: middle;
+        vertical-align: sub;
         font-size: 22px;
         line-height: 1.6;
         margin-left: em(5);
@@ -60,12 +69,25 @@
 .post-navigation {
   margin-bottom: 2em;
 
-  .nav-next:after {
-    content: '\f429';
+  .nav-next, .nav-previous {
+    a {
+      display: inline-block;
+    }
   }
 
-  .nav-previous:before {
-    content: '\f430';
+  .nav-next a {
+    padding: 0 0 0 1em;
+    &:after {
+      content: '\f429';
+    }
+  }
+
+  .nav-previous a {
+    padding: 0 1em 0 0;
+
+    &:before {
+      content: '\f430';
+    }
   }
 }
 

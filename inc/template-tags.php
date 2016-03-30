@@ -98,9 +98,9 @@ endif;
  *
  * @return string
  */
-function aob_categories( $class_name = 'cat-links' ) {
+function aob_categories( $class_name = 'cat-links', $deliminator = ', ' ) {
 	/* translators: used between list items, there is a space after the comma */
-	$categories_list = get_the_category_list( __( ', ', 'aob' ) );
+	$categories_list = get_the_category_list( $deliminator );
 	if ( $categories_list && _aob_categorized_blog() ) {
 		printf( '<span class="%1$s">' . __( '%2$s', 'aob' ) . '</span>', $class_name, $categories_list );
 	}
@@ -113,9 +113,8 @@ if ( ! function_exists( '_aob_entry_footer' ) ) :
 function _aob_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
-		aob_categories();
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'aob' ) );
+		$tags_list = get_the_tag_list( '', __( ' ', 'aob' ) );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . __( '%1$s', 'aob' ) . '</span>', $tags_list );
 		}
