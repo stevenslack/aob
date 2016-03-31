@@ -68,14 +68,13 @@ function aob_banner_options() {
 		'show_option_none' => true,
 		'options'          => array(
 			'slider'    => __( 'Slider', 'aob' ),
-			'hero'      => __( 'Hero Image', 'aob' ),
-			'hero_logo' => __( 'Hero Image w/ centered logo', 'aob' ),
+			'hero'      => __( 'Hero Image', 'aob' )
 		),
 	) );
 
 	$cmb->add_field( array(
-		'name' => __( 'Disable Banner Text', 'aob' ),
-		'desc' => __( 'yes - will create an overlay and display text on top of hero image or slider', 'aob' ),
+		'name' => __( 'Use Banner Text', 'aob' ),
+		'desc' => __( 'yes - This will add text fields and a dark overlay on top of hero image or slider', 'aob' ),
 		'id'   => $prefix . 'display_banner',
 		'type' => 'checkbox',
 	) );
@@ -87,7 +86,7 @@ function aob_banner_options() {
 		'type'       => 'text',
 		'attributes'       => array(
 			'data-conditional-id'    => $prefix . 'display_banner',
-			'data-conditional-value' => 'off',
+			'data-conditional-value' => 'on',
 		)
 	) );
 
@@ -98,7 +97,30 @@ function aob_banner_options() {
 		'type' => 'textarea_small',
 		'attributes'       => array(
 			'data-conditional-id'    => $prefix . 'display_banner',
-			'data-conditional-value' => 'off',
+			'data-conditional-value' => 'on',
+		)
+	) );
+
+	$cmb->add_field( array(
+		'name'       => __( 'Button Text', 'aob' ),
+		'desc'       => __( 'The text for the button which displays below the main banner text', 'aob' ),
+		'id'         => $prefix . 'banner_button_text',
+		'type'       => 'text',
+		'default'    => __( 'Join the movement', 'aob' ),
+		'attributes' => array(
+			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-value' => 'on',
+		)
+	) );
+
+	$cmb->add_field( array(
+		'name'       => __( 'Button URL', 'aob' ),
+		'desc'       => __( 'The URL for the button to direct to.', 'aob' ),
+		'id'         => $prefix . 'banner_button_url',
+		'type'       => 'text_url',
+		'attributes'       => array(
+			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-value' => 'on',
 		)
 	) );
 
@@ -107,9 +129,13 @@ function aob_banner_options() {
 		'desc' => __( 'Upload an image that is at least 1400 pixels wide in order for the image to remain crip', 'aob' ),
 		'id'   => $prefix . 'banner_image',
 		'type' => 'file',
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+			'add_upload_file_text' => __( 'Add Banner Image', 'aob' )
+		),
 		'attributes'       => array(
 			'data-conditional-id'    => $prefix . 'banner_layout',
-			'data-conditional-value' => json_encode( array( 'hero', 'hero_logo' ) )
+			'data-conditional-value' => 'hero'
 		)
 	) );
 

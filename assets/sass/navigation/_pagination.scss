@@ -1,93 +1,98 @@
 .pagination {
-  margin:1.7em 0 3em 0;
-  ul {
-    list-style: none;
-    text-align:center;
-    li {
-      display: inline-block;
-      &:first-child {
-        margin-right: 1em;
-      }
-      &:last-child {
-        margin-left: 1em;
-      }
-    }
-  }
+	margin:1.7em 0 3em 0;
+	text-align: center;
 
-  a {
-    background-color: $bright-red;
-    color: white;
-    text-decoration: none;
-    margin: 0 0.2em;
+	ul {
+		list-style: none;
+		text-align:center;
+		li {
+			display: inline-block;
+			&:first-child {
+				margin-right: 1em;
+			}
+			&:last-child {
+				margin-left: 1em;
+			}
+		}
+	}
 
-    &.prev {
+	.page-numbers {
+		margin: 0 0.3em;
+	}
 
-    }
-  }
+	a {
+		background-color: $bright-red;
+		color: white;
+		text-decoration: none;
+		margin: 0 0.2em;
 
-  a, .current {
-    padding: 0.3em 0.7em;
-    border-radius: 3px;
-  }
+		&.prev {
 
-  a:hover, .current {
-    background: $dark-red;
-    color: white;
-  }
+		}
+	}
+
+	a, .current {
+		padding: 0.3em 0.7em;
+		border-radius: 3px;
+	}
+
+	a:hover, .current {
+		background: $dark-red;
+		color: white;
+	}
 }
 
 .nav-links {
-  @include clearfix;
-  width: 100%;
-}
-
-.nav-links a {
-    background-color: $body_bg;
-    color: $body;
-
-    &:hover,
-    &:focus {
-      background-color: darken( $body_bg, 5 );
-    }
-
-    &:after,
-    &:before {
-        font-family: "Genericons";
-        color: $grey;
-        vertical-align: sub;
-        font-size: 22px;
-        line-height: 1.6;
-        margin-left: em(5);
-        text-decoration: inherit;
-        text-transform: none;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        speak: none;
-    }
+	@include clearfix;
+	width: 100%;
 }
 
 .post-navigation {
-  margin-bottom: 2em;
+	margin-bottom: 2em;
 
-  .nav-next, .nav-previous {
-    a {
-      display: inline-block;
-    }
-  }
+	.nav-next, .nav-previous {
+		a {
+			display: inline-block;
+			background-color: $body_bg;
+			color: $grey;
+			font-weight: bold;
+			letter-spacing: 1px;
 
-  .nav-next a {
-    padding: 0 0 0 1em;
-    &:after {
-      content: '\f429';
-    }
-  }
+			&:hover,
+			&:focus {
+				background-color: darken( $body_bg, 5 );
+			}
 
-  .nav-previous a {
-    padding: 0 1em 0 0;
+			&:after,
+			&:before {
+				font-family: "Genericons";
+				color: $grey;
+				vertical-align: sub;
+				font-size: 22px;
+				line-height: 1.6;
+				margin-left: em(5);
+				text-decoration: inherit;
+				text-transform: none;
+				-moz-osx-font-smoothing: grayscale;
+				-webkit-font-smoothing: antialiased;
+				speak: none;
+			}
+		}
+	}
 
-    &:before {
-      content: '\f430';
-    }
-  }
+	.nav-next a {
+		padding: 0 0 0 1em;
+		&:after {
+			content: '\f429';
+		}
+	}
+
+	.nav-previous a {
+		padding: 0 1em 0 0;
+
+		&:before {
+			content: '\f430';
+		}
+	}
 }
 

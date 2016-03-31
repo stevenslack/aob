@@ -1,0 +1,59 @@
+.hero {
+	background-color: $backdrop;
+	position: relative;
+}
+
+.header-img {
+	opacity: 0.3;
+}
+
+.banner-text {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	max-width: 80%;
+	color: $almost-white;
+	@include transform(translateY(-50%));
+
+	svg {
+		max-width: 545px;
+		width: 100%;
+		height: auto;
+	}
+
+	path.aob-name {
+		@include transform(translateY(10px));
+		fill: $almost-white;
+	}
+
+	path.ride-city {
+		display: none;
+	}
+
+	h1 {
+		font-weight: normal;
+		letter-spacing: 1px;
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.action-btn {
+		text-transform: uppercase;
+		display: inline-block;
+		border: 1px solid $link-color;
+		border-radius: 3px;
+		padding: 0.2em 1em;
+		margin: 1em 0;
+		font-size: 1.7em;
+		@include transition(all 0.2s ease-in-out);
+
+		&:hover,
+		&:focus {
+			color: $almost-white;
+			border-color: $title-red;
+		}
+	}
+}

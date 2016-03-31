@@ -26,10 +26,12 @@
 			$layout = get_post_meta( get_the_id(), 'aob_banner_layout', true );
 
 			if ( ! empty( $layout ) ) {
+
 			 	// The Hero Image Layout
 				if ( 'hero' === $layout ) {
-					aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
+					aob_get_template_part( 'templates/header-hero', array( 'aob_options' => $aob_options ) );
 					get_template_part( 'templates/main', 'navigation' );
+
 				// The Soliloquy Slider Layout
 				} elseif ( 'slider' === $layout ) {
 					get_template_part( 'templates/front', 'slider' );
