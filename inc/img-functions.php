@@ -105,7 +105,7 @@ function aob_banner_image_css( $post_thumbnail_id ) {
         // the output string
         $output_css .= sprintf(
             $media_query,       // the formatted string
-            $min, // the min width value
+            $min,               // the min width value
             $atts[1],           // the max width value
             $atts[2],           // the img height
             esc_url( $atts[0] ) // the image URL
