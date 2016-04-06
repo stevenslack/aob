@@ -34,23 +34,22 @@
 						'aob_options'  => $aob_options,
 						'display_text' => $display_text
 					) );
-					get_template_part( 'templates/main', 'navigation' );
-
 				// The Soliloquy Slider Layout
 				} elseif ( 'slider' === $layout ) {
 					aob_get_template_part( 'templates/front-slider', array(
 						'aob_options'  => $aob_options,
 						'display_text' => $display_text
 					) );
-				} else {
-					aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
 				}
+			} else {
+				aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
 			}
 
 		} else {
 			aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
-			get_template_part( 'templates/main', 'navigation' );
 		}
+
+		get_template_part( 'templates/main', 'navigation' );
 	?>
 
 	<!-- Site Content -->

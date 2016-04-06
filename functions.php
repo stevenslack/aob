@@ -223,3 +223,16 @@ function aob_login_title() { return get_option( 'blogname' ); }
 add_action( 'login_enqueue_scripts', 'aob_login_css', 10 );
 add_filter( 'login_headerurl', 'aob_login_url' );
 add_filter( 'login_headertitle', 'aob_login_title' );
+
+/**
+ * Body class manipulation
+ */
+add_filter( 'body_class', 'aob_body_classes' , 20, 2);
+function aob_body_classes( $classes ) {
+	if ( is_front_page() ) {
+		foreach( $classes as $key => $value ) {
+			if ( $value == 'page-template-default' ) unset( $classes[$key] );
+		}
+	}
+	return $classes;
+}
