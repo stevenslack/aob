@@ -197,6 +197,14 @@ function soliloquy_title_before_caption( $caption, $id, $slide, $data, $i ) {
         return $caption;
 }
 
+add_filter( 'soliloquy_output_item_classes', 'aob_output_item_classes', 10, 4 );
+function aob_output_item_classes( $classes, $item, $i, $data ) {
+	if ( ! empty( $item['caption'] ) ) {
+		$classes[] = 'slide-has-caption';
+	}
+	return $classes;
+}
+
 
 /**
  * CUSTOM LOGIN PAGE

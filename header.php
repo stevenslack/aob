@@ -22,19 +22,26 @@
 
 	<?php
 		if ( is_front_page() ) {
-			// get the front page layout option
-			$layout = get_post_meta( get_the_id(), 'aob_banner_layout', true );
+			// get the front page layout option and banner text
+			$layout       = get_post_meta( get_the_id(), 'aob_banner_layout', true );
+			$display_text = get_post_meta( get_the_id(), 'aob_display_banner_text', true );
 
 			if ( ! empty( $layout ) ) {
 
 			 	// The Hero Image Layout
 				if ( 'hero' === $layout ) {
-					aob_get_template_part( 'templates/header-hero', array( 'aob_options' => $aob_options ) );
+					aob_get_template_part( 'templates/header-hero', array(
+						'aob_options'  => $aob_options,
+						'display_text' => $display_text
+					) );
 					get_template_part( 'templates/main', 'navigation' );
 
 				// The Soliloquy Slider Layout
 				} elseif ( 'slider' === $layout ) {
-					get_template_part( 'templates/front', 'slider' );
+					aob_get_template_part( 'templates/front-slider', array(
+						'aob_options'  => $aob_options,
+						'display_text' => $display_text
+					) );
 				} else {
 					aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
 				}

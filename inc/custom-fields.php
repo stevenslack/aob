@@ -75,7 +75,7 @@ function aob_banner_options() {
 	$cmb->add_field( array(
 		'name' => __( 'Use Banner Text', 'aob' ),
 		'desc' => __( 'yes - This will add text fields and a dark overlay on top of hero image or slider', 'aob' ),
-		'id'   => $prefix . 'display_banner',
+		'id'   => $prefix . 'display_banner_text',
 		'type' => 'checkbox',
 	) );
 
@@ -85,7 +85,7 @@ function aob_banner_options() {
 		'id'         => $prefix . 'banner_text',
 		'type'       => 'text',
 		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-id'    => $prefix . 'display_banner_text',
 			'data-conditional-value' => 'on',
 		)
 	) );
@@ -96,7 +96,7 @@ function aob_banner_options() {
 		'id'   => $prefix . 'banner_supporting',
 		'type' => 'textarea_small',
 		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-id'    => $prefix . 'display_banner_text',
 			'data-conditional-value' => 'on',
 		)
 	) );
@@ -108,7 +108,7 @@ function aob_banner_options() {
 		'type'       => 'text',
 		'default'    => __( 'Join the movement', 'aob' ),
 		'attributes' => array(
-			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-id'    => $prefix . 'display_banner_text',
 			'data-conditional-value' => 'on',
 		)
 	) );
@@ -119,7 +119,7 @@ function aob_banner_options() {
 		'id'         => $prefix . 'banner_button_url',
 		'type'       => 'text_url',
 		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'display_banner',
+			'data-conditional-id'    => $prefix . 'display_banner_text',
 			'data-conditional-value' => 'on',
 		)
 	) );

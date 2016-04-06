@@ -1,0 +1,53 @@
+// the soliloquy slider
+
+.aob-slider-container {
+	&.hero-text {
+		.soliloquy-caption {
+			display: none;
+		}
+	}
+
+	.slide-has-caption,
+	&.hero-text {
+		.soliloquy-image {
+			opacity:0.3;
+		}
+	}
+
+	.soliloquy-wrapper {
+		background-color: $backdrop;
+	}
+
+	.soliloquy-container .soliloquy-caption {
+		top: 58%;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		text-align: center;
+		max-width: 80%;
+		color: $almost-white;
+		z-index: 1;
+		@include transform(translateY(-50%));
+
+		.soliloquy-caption-inside {
+			background: none;
+			padding:0;
+		}
+
+		h4.title {
+			font-size: 3em;
+			font-weight: normal;
+			letter-spacing: 1px;
+			margin: 0;
+			line-height: 1.2;
+		}
+		.caption {
+			max-width: em(500);
+			width: auto;
+			margin: 1em auto 0;
+			font-size: 1.3em;
+			letter-spacing: 1px;
+		}
+	}
+}
