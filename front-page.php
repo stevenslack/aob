@@ -8,13 +8,31 @@
 get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<section class="news-stories">
+				<?php
 
-			<?php while ( have_posts() ) : the_post(); ?>
+					if ( false === ( $news = get_transient( 'front_page_news' ) ) ) :
+						$args = array(
+							'post_type'      => array( 'post', 'tribe_events' ),
+							'order'          => 'DESC',
+							'orderby'        => 'date',
+							'posts_per_page' => 3,
+						);
+						$news = new WP_Query( $args );
 
-				<?php get_template_part( 'templates/content', 'page' ); ?>
+					    set_transient( 'front_page_news', $news, 12 * HOUR_IN_SECONDS );
 
-			<?php endwhile; // end of the loop. ?>
+					endif;
 
+					if ( $news->have_posts() ) : $i = 1;
+						while ( $news->have_posts() ) : $news->the_post(); $i++;
+							aob_get_template_part( 'templates/content', array( 'i' => $i ) );
+						endwhile;
+					endif;
+
+					wp_reset_postdata();
+				?>
+			</section>
 		</main><!-- #main -->
 	</div>
 

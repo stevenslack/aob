@@ -207,7 +207,7 @@ function aob_output_item_classes( $classes, $item, $i, $data ) {
 
 
 /**
- * CUSTOM LOGIN PAGE
+ * Custom Login Page Styles
  */
 function aob_login_css() {
 	wp_enqueue_style( 'aob_login_css', get_template_directory_uri() . '/assets/css/login.css', false );
@@ -226,6 +226,8 @@ add_filter( 'login_headertitle', 'aob_login_title' );
 
 /**
  * Body class manipulation
+ * @param  array $classes array of class names
+ * @return array
  */
 add_filter( 'body_class', 'aob_body_classes' , 20, 2);
 function aob_body_classes( $classes ) {
@@ -236,3 +238,17 @@ function aob_body_classes( $classes ) {
 	}
 	return $classes;
 }
+
+/**
+ * Delete front page news query
+ *
+ * @return void
+ */
+function aob_news_transient_flusher() {
+	global $post;
+
+	if ( ( 'post' || 'tribe_events' ) == get_post_type() ) {
+		delete_transient( 'front_page_news' );
+	}
+}
+add_action( 'save_post', 'aob_news_transient_flusher' );
