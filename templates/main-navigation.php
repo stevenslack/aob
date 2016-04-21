@@ -1,6 +1,6 @@
 <?php // the main site navigation
 	$layout = aob_get_var( 'layout' );
-	$class  = ( $layout === 'hero' || 'slider' ) ? ' centered' : '';
+	$class  = ( ( $layout === 'hero' || 'slider' ) && is_front_page() ) ? ' centered' : '';
 ?>
 		<button id="toggle" class="nav-toggle" aria-controls="nav-primary" data-nav-toggle="#nav-primary" href="#">
 			<?php _e( 'Menu', 'aob' ); ?> <span class="burger-icon" aria-hidden="true"></span>
