@@ -32,3 +32,27 @@
         margin: 0 0.5em 1em;
     }
 }
+
+.social {
+    a {
+        font-family: "Genericons";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+    }
+    .aob-google:before {
+        content: '\f206';
+    }
+    .aob-facebook:before {
+        content: '\f204';
+    }
+    .aob-twitter:before {
+        content: '\f202';
+    }
+    .aob-email:before {
+        content: '\f410';
+    }
+    .aob-instagram:before {
+        content: '\f215';
+    }
+}

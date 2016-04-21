@@ -2,8 +2,20 @@
     padding-top: em(38);
 }
 
+.widget-area {
+    ul, ol {
+        padding-left: 0;
+    }
+
+    aside:first-of-type {
+        .widget-title {
+            margin-top: 0;
+        }
+    }
+}
+
 .widget {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.7em;
 
 	/* Make sure select elements fit in widgets */
 	select {
@@ -14,10 +26,11 @@
 .widget-title {
     margin-bottom: 0.6em;
     padding-bottom: 0.5em;
-    color: $bright-red;
-    font-style: italic;
+    color: $body;
+  //  font-style: italic;
+    text-transform: uppercase;
     font-size: 1.25em;
-    font-family: 'Georgia', serif;
+    font-family: $font__main;
 }
 
 /* Search widget */
@@ -40,7 +53,7 @@
 .widget_tag_cloud a,
 .widget_categories a {
     font-weight: bold;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: $font__main;
 }
 
 .widget {
@@ -57,7 +70,7 @@
             text-transform: uppercase;
             text-shadow:none;
             font-weight: bold;
-            font-family: 'Open Sans Condensed', sans-serif;
+            font-family: $font__main;
 
             &:hover {
                 background:$mid-red;
@@ -72,7 +85,7 @@
                 color:$dark-red;
                 text-transform: uppercase;
                 font-weight: bold;
-                font-family: 'Open Sans Condensed', sans-serif;
+                font-family: $font__main;
             }
             input {
                 border:none;

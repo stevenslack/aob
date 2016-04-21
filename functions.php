@@ -118,9 +118,9 @@ add_action( 'wp_enqueue_scripts', '_aob_scripts' );
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/extras.php';
+require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/customizer.php';
-require get_template_directory() . '/inc/jetpack.php';
+require get_template_directory() . '/inc/plugins.php';
 require get_template_directory() . '/inc/theme-options.php';
 require get_template_directory() . '/inc/img-functions.php';
 require get_template_directory() . '/inc/class-drop-walker-nav.php';
@@ -141,70 +141,6 @@ if ( file_exists( get_template_directory() . '/inc/cmb2/init.php' ) ) {
   require get_template_directory() . '/inc/custom-fields.php';
 }
 
-/**
- * White Label Soliloquy
- */
-add_filter( 'gettext', 'aob_soliloquy_whitelabel', 10, 3 );
-function aob_soliloquy_whitelabel( $translated_text, $source_text, $domain ) {
-
-    // If not in the admin, return the default string.
-    if ( ! is_admin() ) {
-        return $translated_text;
-    }
-
-    if ( strpos( $source_text, 'Soliloquy Slider' ) !== false ) {
-        return str_replace( 'Soliloquy Slider', 'Slider', $translated_text );
-    }
-
-    if ( strpos( $source_text, 'Soliloquy Sliders' ) !== false ) {
-        return str_replace( 'Soliloquy Sliders', 'Sliders', $translated_text );
-    }
-
-    if ( strpos( $source_text, 'Soliloquy slider' ) !== false ) {
-        return str_replace( 'Soliloquy slider', 'slider', $translated_text );
-    }
-
-    if ( strpos( $source_text, 'Soliloquy' ) !== false ) {
-        return str_replace( 'Soliloquy', 'Sliders', $translated_text );
-    }
-
-    return $translated_text;
-}
-
-
-/**
- * Soliloquy
- */
-add_filter( 'soliloquy_defaults', 'aob_soliloquy_default_settings', 20, 2 );
-function aob_soliloquy_default_settings( $defaults, $post_id ) {
-    $defaults['slider_width']  = 1400; // Slider width.
-    $defaults['slider_height'] = 787;  // Slider height.
-    $defaults['transition']    = 'horizontal';
-    $defaults['arrows']        = 0;
-    $defaults['auto']          = 0;
-
-    return $defaults;
-}
-
-add_filter( 'soliloquy_output_caption', 'soliloquy_title_before_caption', 10, 5 );
-function soliloquy_title_before_caption( $caption, $id, $slide, $data, $i ) {
-
-	// Check if current slide has a title specified
-	if ( isset( $slide['title'] ) && !empty( $slide['title'] ) ) {
-		$caption = '<h4 class="title">' . $slide['title'] . '</h4>';
-                $caption .= '<div class="caption">' . $slide['caption'] . '</div>';
-        }
-        return $caption;
-}
-
-add_filter( 'soliloquy_output_item_classes', 'aob_output_item_classes', 10, 4 );
-function aob_output_item_classes( $classes, $item, $i, $data ) {
-	if ( ! empty( $item['caption'] ) ) {
-		$classes[] = 'slide-has-caption';
-	}
-	return $classes;
-}
-
 
 /**
  * Custom Login Page Styles
@@ -223,32 +159,3 @@ function aob_login_title() { return get_option( 'blogname' ); }
 add_action( 'login_enqueue_scripts', 'aob_login_css', 10 );
 add_filter( 'login_headerurl', 'aob_login_url' );
 add_filter( 'login_headertitle', 'aob_login_title' );
-
-/**
- * Body class manipulation
- * @param  array $classes array of class names
- * @return array
- */
-add_filter( 'body_class', 'aob_body_classes' , 20, 2);
-function aob_body_classes( $classes ) {
-	if ( is_front_page() ) {
-		foreach( $classes as $key => $value ) {
-			if ( $value == 'page-template-default' ) unset( $classes[$key] );
-		}
-	}
-	return $classes;
-}
-
-/**
- * Delete front page news query
- *
- * @return void
- */
-function aob_news_transient_flusher() {
-	global $post;
-
-	if ( ( 'post' || 'tribe_events' ) == get_post_type() ) {
-		delete_transient( 'front_page_news' );
-	}
-}
-add_action( 'save_post', 'aob_news_transient_flusher' );

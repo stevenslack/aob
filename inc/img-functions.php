@@ -119,6 +119,7 @@ function aob_banner_image_css( $post_thumbnail_id ) {
 /**
  * Responsive Featured Image Background
  *
+ * @return {void} adds a cached version of inline styles
  */
 function aob_print_banner_image() {
     if ( ! is_front_page() ) {
@@ -127,16 +128,19 @@ function aob_print_banner_image() {
 
     $layout = get_post_meta( get_the_id(), 'aob_banner_layout',   true );
     $img_id = get_post_meta( get_the_id(), 'aob_banner_image_id', true );
+    $key    = aob_get_transient_key( 'aob_banner_', $img_id, $layout );
+
+    if ( ( $output_css = get_transient( $key ) ) === false ) {
+        $output_css = aob_banner_image_css( intval( $img_id ) );
+        set_transient( $key, $output_css, MINUTE_IN_SECONDS * 60 );
+    }
 
     if ( ! empty( $layout ) && ! empty( $img_id ) ) {
         // The Hero Image Layout
-        if ( 'hero' === $layout ) {
-            $output_css = aob_banner_image_css( intval( $img_id ) );
-
-            if ( ! empty( $output_css ) ) {
-                wp_add_inline_style( 'aob-style', $output_css );
-            }
+        if ( 'hero' === $layout && ! empty( $output_css ) ) {
+            wp_add_inline_style( 'aob-style', $output_css );
         }
     }
+
 } // end function aob_print_banner_image
 add_action( 'wp_enqueue_scripts', 'aob_print_banner_image' );

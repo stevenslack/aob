@@ -131,9 +131,14 @@ article.hentry {
     }
 }
 
+.read-more {
+    display: inline-block;
+    margin-top: 1em;
+}
+
 .comments-link,
 .edit-link,
-.entry-date,
+.event-time,
 .nav-previous {
     display: block;
 
@@ -160,6 +165,6 @@ article.hentry {
     content: '\f411';
 }
 
-.entry-date:before {
+.event-time:before {
     content: '\f307';
 }

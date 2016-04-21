@@ -4,7 +4,6 @@
  */
 
 $aob_options = aob_get_var( 'aob_options' );
-
 ?>
 	<div class="social-head social">
 		<?php if ( ! empty( $aob_options['google_input'] ) && $google_plus = $aob_options['google_input'] ) : ?>

@@ -118,6 +118,7 @@ function aob_get_theme_options() {
         'facebook_input'    => '',
         'twitter_input'     => '',
         'google_input'      => '',
+        'insta_input'       => '',
         'donate_url'        => '',
         'newsletter_url'    => '',
         'email_address'     => '',

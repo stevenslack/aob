@@ -99,10 +99,16 @@ endif;
  * @return string
  */
 function aob_categories( $class_name = 'cat-links', $deliminator = ', ' ) {
-	/* translators: used between list items, there is a space after the comma */
-	$categories_list = get_the_category_list( $deliminator );
+
+	$output_string = '<span class="%1$s">' . __( '%2$s', 'aob' ) . '</span>';
+
+	// if this is an event
+	if ( 'tribe_events' === get_post_type() ) {
+		printf( $output_string, $class_name, get_the_term_list( get_the_id(), 'tribe_events_cat', '', $deliminator ) );
+	}
+
 	if ( $categories_list && _aob_categorized_blog() ) {
-		printf( '<span class="%1$s">' . __( '%2$s', 'aob' ) . '</span>', $class_name, $categories_list );
+		printf( $output_string, $class_name, get_the_category_list( $deliminator ) );
 	}
 }
 
@@ -367,5 +373,13 @@ function aob_has_social() {
 		return false;
 	} else {
 		return true;
+	}
+}
+
+function aob_get_blog_url( ) {
+	if ( 'page' === get_option( 'show_on_front' ) ) {
+		$blog_id = get_option( 'page_for_posts' );
+
+		return get_the_permalink( $blog_id );
 	}
 }

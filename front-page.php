@@ -32,6 +32,11 @@ get_header(); ?>
 
 					wp_reset_postdata();
 				?>
+				<?php if ( '' !== aob_get_blog_url() && $blog_url = aob_get_blog_url() ) : ?>
+					<a href="<?php echo esc_url( $blog_url ); ?>"><?php _e( 'View All Posts', 'aob' ) ?></a>
+				<?php endif; ?>
+
+				<?php // echo do_shortcode( '[instagram-feed]' ); ?>
 			</section>
 		</main><!-- #main -->
 	</div>

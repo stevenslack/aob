@@ -15,3 +15,81 @@
         }
     }
 }
+
+.widget-area {
+    .tribe-events-list-widget {
+
+        .tribe-event-title {
+            margin: 0 0 0.4em;
+            @include font-size(22);
+        }
+
+        .tribe-event-duration {
+            color: #87815c;
+        }
+
+        ol li {
+            margin-bottom: 1em;
+            border-bottom: 1px solid #87815c;
+            padding-bottom: 1em;
+        }
+    }
+
+    .tribe-events-widget-link {
+        a {
+            border-radius: 3px;
+            background: $bright-red;
+            color: white;
+            line-height: 1;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            &:hover {
+                background: lighten( $bright-red, 10 );
+            }
+        }
+    }
+}
+
+.aob-list-date {
+    float: left;
+    overflow: hidden;
+    font-weight: bold;
+    margin: 10px 5% 10px 0;
+    padding: em(3);
+    width: 15%;
+    text-align: center;
+    display: inline;
+    background: $bright-red;
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    .list-monthname {
+        background: $almost-white;
+        color: $body;
+        padding: 1px 3px;
+        @include font-size(18);
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .list-daynumber {
+        color: $almost-white;
+        @include font-size(22);
+        line-height: 22px;
+        display: block;
+        text-align: center;
+    }
+}
+
+.aob-list-info {
+    margin: 10px 0;
+    display: inline;
+    line-height: 1;
+    float: left;
+    width: 80%;
+}
