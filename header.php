@@ -21,35 +21,35 @@
 	<?php $aob_options = get_option( 'ashevilleonbikes_theme_options' ); ?>
 
 	<?php
+
+		$display_text = '';
+		$layout = '';
+
 		if ( is_front_page() ) {
 			// get the front page layout option and banner text
 			$layout       = get_post_meta( get_the_id(), 'aob_banner_layout', true );
 			$display_text = get_post_meta( get_the_id(), 'aob_display_banner_text', true );
 
 			if ( ! empty( $layout ) ) {
-
 			 	// The Hero Image Layout
 				if ( 'hero' === $layout ) {
-					aob_get_template_part( 'templates/header-hero', array(
-						'aob_options'  => $aob_options,
-						'display_text' => $display_text
-					) );
+					$path = 'templates/header-hero';
 				// The Soliloquy Slider Layout
 				} elseif ( 'slider' === $layout ) {
-					aob_get_template_part( 'templates/front-slider', array(
-						'aob_options'  => $aob_options,
-						'display_text' => $display_text
-					) );
+					$path = 'templates/front-slider';
 				}
 			} else {
-				aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
+				$path = 'templates/header-default';
 			}
 
 		} else {
-			aob_get_template_part( 'templates/header-default', array( 'aob_options' => $aob_options ) );
+			$path = 'templates/header-default';
 		}
-
-		get_template_part( 'templates/main', 'navigation' );
+		aob_get_template_part( $path, array(
+			'aob_options'  => $aob_options,
+			'display_text' => $display_text
+		) );
+		aob_get_template_part( 'templates/main-navigation', array( 'layout' => $layout ) );
 	?>
 
 	<!-- Site Content -->

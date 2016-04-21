@@ -19,6 +19,15 @@ button.nav-toggle {
 		//background: white;
 	}
 
+	.nav-menu.centered {
+		text-align: center;
+
+		li {
+			float: none;
+			display: inline-block;
+		}
+	}
+
 	li {
 		position: relative;
 		float: left;
