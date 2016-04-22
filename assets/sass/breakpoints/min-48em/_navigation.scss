@@ -3,6 +3,18 @@ button.nav-toggle {
     display: none;
 }
 
+.home {
+	.nav {
+		padding: 1em 0;
+		max-height: none;
+		background-color: $black;
+
+		li a {
+			color: $almost-white;
+		}
+	}
+}
+
 /* =Menu
 ----------------------------------------------- */
 .nav {
