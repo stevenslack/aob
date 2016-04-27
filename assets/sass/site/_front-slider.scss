@@ -27,30 +27,37 @@
 	}
 
 	.soliloquy-container .soliloquy-caption {
-		top: 0;
 		left: 0;
 		right: 0;
-		bottom: 0;
+		bottom: 45%;
 		margin: auto;
 		text-align: center;
 		max-width: 80%;
 		color: $almost-white;
 		z-index: 1;
 
+		@media screen and ( min-width: em(800) ) {
+			top: 0;
+			bottom: 0;
+		}
+
 		.soliloquy-caption-inside {
 			background: none;
 			padding:0;
-			position: absolute;
-			top: 50%;
 			left: 0;
 			right: 0;
 			bottom: 0;
 			margin: auto;
-			@include transform(translateY(-50%));
+
+			@media screen and ( min-width: em(800) ) {
+				position: absolute;
+				top: 50%;
+				@include transform(translateY(-50%));
+			}
 		}
 
 		h4.title {
-			font-size: 3em;
+			font-size: 1.5em;
 			font-weight: normal;
 			letter-spacing: 1px;
 			margin: 0;
@@ -60,14 +67,28 @@
 			text-transform: uppercase;
 			display: inline-block;
 			padding: 0 0.2em;
+
+			@media screen and ( min-width: em(1124) ) {
+				font-size: 3em;
+			}
 		}
+
 		.caption {
 			max-width: em(500);
 			width: auto;
 			margin: 1em auto 0;
-			font-size: 1.3em;
+			display: none;
+
 			letter-spacing: 1px;
 			line-height: 1.6;
+
+			@media screen and ( min-width: em(800) ) {
+				display: block;
+			}
+
+			@media screen and ( min-width: em(920) ) {
+				font-size: 1.3em;
+			}
 		}
 	}
 }
