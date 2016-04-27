@@ -21,15 +21,6 @@
 	.banner-text {
 		position: relative;
 		padding: 5em 0;
-		@include transform(translateY(0));
-	}
-}
-
-.header-img {
-	.banner-text {
-		position: absolute;
-		top: 50%;
-		@include transform(translateY(-50%));
 	}
 }
 
