@@ -5,6 +5,26 @@
     }
 }
 
+.aob-slider-container {
+    svg {
+        position: absolute;
+        top: 1em;
+        left: 2em;
+
+        path.aob-name {
+            fill: transparent;
+            @include transition( all 0.2s ease-in-out );
+        }
+
+        &:hover,
+        &:focus {
+            path.aob-name {
+                fill: $almost-white;
+            }
+        }
+    }
+}
+
 .site-branding {
     float: left;
     margin: 1em 0;
@@ -15,9 +35,15 @@
     }
 }
 
-.donate-signup {
+.header-utility {
     float: right;
-    margin-top: em(28);
+}
+
+.donate-signup {
+    margin-top: 0.4em;
+    a {
+        margin-bottom: 0;
+    }
 }
 
 .nav-previous,

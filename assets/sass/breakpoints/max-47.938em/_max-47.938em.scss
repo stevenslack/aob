@@ -4,5 +4,16 @@
 	}
 }
 
+.aob-slider-container {
+    svg {
+   		margin: 1.5em auto 0;
+   		display: block;
+   	}
+
+   	.banner-text {
+   		margin-top: 1.5em;
+   	}
+}
+
 @import "navigation";
 @import "comments";

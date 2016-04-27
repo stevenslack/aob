@@ -41,6 +41,7 @@ function aob_soliloquy_default_settings( $defaults, $post_id ) {
     $defaults['transition']    = 'horizontal';
     $defaults['arrows']        = 0;
     $defaults['auto']          = 0;
+    $defaults['gutter']        = 0;
 
     return $defaults;
 }

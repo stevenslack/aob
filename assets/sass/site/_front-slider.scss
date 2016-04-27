@@ -1,14 +1,22 @@
 // the soliloquy slider
 
 .aob-slider-container {
-	&.hero-text {
-		.soliloquy-caption {
-			display: none;
-		}
+	background-color: $black;
+
+	path.aob-name {
+		@include transform(translateY(10px));
+		fill: $almost-white;
 	}
 
-	.slide-has-caption,
-	&.hero-text {
+	path.ride-city {
+		display: none;
+	}
+
+	.banner-text {
+		margin-top: 2.5em;
+	}
+
+	.slide-has-caption {
 		.soliloquy-image {
 			opacity:0.3;
 		}
@@ -19,7 +27,7 @@
 	}
 
 	.soliloquy-container .soliloquy-caption {
-		top: 58%;
+		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -28,11 +36,17 @@
 		max-width: 80%;
 		color: $almost-white;
 		z-index: 1;
-		@include transform(translateY(-50%));
 
 		.soliloquy-caption-inside {
 			background: none;
 			padding:0;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			@include transform(translateY(-50%));
 		}
 
 		h4.title {
@@ -41,6 +55,11 @@
 			letter-spacing: 1px;
 			margin: 0;
 			line-height: 1.2;
+
+			background: rgba(240,84,72,0.89);
+			text-transform: uppercase;
+			display: inline-block;
+			padding: 0 0.2em;
 		}
 		.caption {
 			max-width: em(500);
@@ -48,6 +67,7 @@
 			margin: 1em auto 0;
 			font-size: 1.3em;
 			letter-spacing: 1px;
+			line-height: 1.6;
 		}
 	}
 }

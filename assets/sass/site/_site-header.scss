@@ -21,6 +21,10 @@
     }
 }
 
+.header-utility {
+    margin-bottom: 1em;
+}
+
 .donate-signup {
     text-align: center;
     a {
@@ -34,11 +38,19 @@
 }
 
 .social {
+    text-align: center;
     a {
         font-family: "Genericons";
         display: inline-block;
-        width: 16px;
-        height: 16px;
+        width: 40px;
+        height: 40px;
+        color: $dark;
+        @include font-size(28);
+
+        &:hover,
+        &:focus {
+            color: $bright-red;
+        }
     }
     .aob-google:before {
         content: '\f206';

@@ -73,10 +73,38 @@ function aob_banner_options() {
 	) );
 
 	$cmb->add_field( array(
+		'name'             => __( 'Select which slider to use', 'aob' ),
+		'desc'             => __( '', 'aob' ),
+		'id'               => $prefix . 'slider',
+		'type'             => 'select',
+		'show_option_none' => true,
+		'options'          => aob_post_type_select( array( 'post_type' => 'soliloquy' ) ),
+		'attributes'       => array(
+			'data-conditional-id'    => $prefix . 'banner_layout',
+			'data-conditional-value' => 'slider',
+		)
+	) );
+
+	$cmb->add_field( array(
+		'name' => __( 'Banner Image', 'aob' ),
+		'desc' => __( 'Upload an image that is at least 1400 pixels wide in order for the image to remain crip', 'aob' ),
+		'id'   => $prefix . 'banner_image',
+		'type' => 'file',
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+			'add_upload_file_text' => __( 'Add Banner Image', 'aob' )
+		),
+		'attributes' => array(
+			'data-conditional-id'    => $prefix . 'banner_layout',
+			'data-conditional-value' => 'hero'
+		)
+	) );
+
+	$cmb->add_field( array(
 		'name' => __( 'Use Banner Text', 'aob' ),
-		'desc' => __( 'yes - This will add text fields and a dark overlay on top of hero image or slider', 'aob' ),
+		'desc' => __( 'yes', 'aob' ),
 		'id'   => $prefix . 'display_banner_text',
-		'type' => 'checkbox',
+		'type' => 'checkbox'
 	) );
 
 	$cmb->add_field( array(
@@ -121,45 +149,6 @@ function aob_banner_options() {
 		'attributes'       => array(
 			'data-conditional-id'    => $prefix . 'display_banner_text',
 			'data-conditional-value' => 'on',
-		)
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Banner Image', 'aob' ),
-		'desc' => __( 'Upload an image that is at least 1400 pixels wide in order for the image to remain crip', 'aob' ),
-		'id'   => $prefix . 'banner_image',
-		'type' => 'file',
-		'options' => array(
-			'url' => false, // Hide the text input for the url
-			'add_upload_file_text' => __( 'Add Banner Image', 'aob' )
-		),
-		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'banner_layout',
-			'data-conditional-value' => 'hero'
-		)
-	) );
-
-	$cmb->add_field( array(
-		'name'             => __( 'Select which slider to use', 'aob' ),
-		'desc'             => __( '', 'aob' ),
-		'id'               => $prefix . 'slider',
-		'type'             => 'select',
-		'show_option_none' => true,
-		'options'          => aob_post_type_select( array( 'post_type' => 'soliloquy' ) ),
-		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'banner_layout',
-			'data-conditional-value' => 'slider',
-		)
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Use Slider Title and Caption instead of banner text?', 'aob' ),
-		'desc' => __( 'yes - This will overwrite the banner text and default to each slides title and caption', 'aob' ),
-		'id'   => $prefix . 'slider_text',
-		'type' => 'checkbox',
-		'attributes'       => array(
-			'data-conditional-id'    => $prefix . 'banner_layout',
-			'data-conditional-value' => 'slider',
 		)
 	) );
 }

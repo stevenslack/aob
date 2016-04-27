@@ -25,9 +25,15 @@
 	}
 }
 
+.header-img {
+	.banner-text {
+		position: absolute;
+		top: 50%;
+		@include transform(translateY(-50%));
+	}
+}
+
 .banner-text {
-	position: absolute;
-	top: 50%;
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -35,7 +41,6 @@
 	max-width: 80%;
 	color: $almost-white;
 	z-index: 1;
-	@include transform(translateY(-50%));
 
 	svg {
 		max-width: 545px;
