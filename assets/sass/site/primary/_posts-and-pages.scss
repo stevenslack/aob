@@ -19,7 +19,7 @@ article.hentry {
     }
 
     article.hentry {
-        padding: 1.5em 2.5em;
+        padding: 1em;
         background-color: $content-bg;
         @include clearfix;
         width: 100%;
@@ -30,6 +30,10 @@ article.hentry {
 
         &:last-of-type {
             border-bottom: none;
+        }
+
+        @media screen and ( min-width: em(450) ) {
+            padding: 1.5em 2.5em;
         }
     }
 
@@ -44,7 +48,17 @@ article.hentry {
 
     .post-thumb,
     .post-story {
-        @include span-columns(6);
+        @media screen and ( min-width: em(600) ) {
+            @include span-columns(6);
+        }
+    }
+
+    .post-thumb {
+        margin-top: 1em;
+
+        @media screen and ( min-width: em(600) ) {
+            margin-top: 0;
+        }
     }
 }
 

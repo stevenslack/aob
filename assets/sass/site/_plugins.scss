@@ -65,6 +65,7 @@
     background: $bright-red;
     box-sizing: border-box;
     border-radius: 3px;
+    min-width: em(40);
 
     .list-monthname {
         background: $almost-white;

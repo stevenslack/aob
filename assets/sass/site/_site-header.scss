@@ -1,70 +1,82 @@
 .site-header {
-    background-color: $content-bg;
+	background-color: $content-bg;
 }
 
 .site-branding {
-    @include clearfix;
-    margin: 1em auto;
+	@include clearfix;
+	margin: 1em auto;
 
-    svg {
-        width: auto;
-        max-width: 100%;
-    }
+	svg {
+		width: auto;
+		max-width: 100%;
+	}
 
-    a {
-        color: $bright-red;
-        text-decoration: none;
-    }
+	a {
+		color: $bright-red;
+		text-decoration: none;
+	}
 
-    h1, h2.site-description {
-        display: none;
-    }
+	h1, h2.site-description {
+		display: none;
+	}
 }
 
 .header-utility {
-    margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .donate-signup {
-    text-align: center;
-    a {
-        display: inline-block;
-        padding: 0.3em 1.4em;
-        border: 1px solid;
-        border-radius: 4px;
-        font-weight: bold;
-        margin: 0 0.5em 1em;
-    }
+	text-align: center;
+	a {
+		display: inline-block;
+		padding: 0.3em 1.4em;
+		border: 1px solid;
+		border-radius: 4px;
+		font-weight: bold;
+		margin: 0 0.5em 1em;
+	}
 }
 
 .social {
-    text-align: center;
-    a {
-        font-family: "Genericons";
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        color: $dark;
-        @include font-size(28);
+	text-align: center;
+	a {
+		font-family: 'Genericons';
+		line-height: 1.8;
 
-        &:hover,
-        &:focus {
-            color: $bright-red;
-        }
-    }
-    .aob-google:before {
-        content: '\f206';
-    }
-    .aob-facebook:before {
-        content: '\f204';
-    }
-    .aob-twitter:before {
-        content: '\f202';
-    }
-    .aob-email:before {
-        content: '\f410';
-    }
-    .aob-instagram:before {
-        content: '\f215';
-    }
+		display: inline-block;
+
+		width: 30px;
+		height: 30px;
+		margin: 7px 2px 0;
+
+		text-align: center;
+		vertical-align: baseline;
+
+		color: white;
+		border-radius: 50%;
+		background-color: #e05047;
+
+		@include font-size(18);
+
+		&:hover,
+		&:focus {
+			color: $bright-red;
+		}
+	}
+
+	.aob-google:before {
+		content: '\f206';
+	}
+	.aob-facebook:before {
+		content: '\f204';
+	}
+	.aob-twitter:before {
+		content: '\f202';
+	}
+	.aob-email:before {
+		content: '\f410';
+	}
+	.aob-instagram:before {
+		content: '\f215';
+	}
 }

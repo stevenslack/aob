@@ -43,6 +43,8 @@
     margin-top: 0.4em;
     a {
         margin-bottom: 0;
+        background-color: #93caba;
+        color: #FFF;
     }
 }
 
@@ -58,14 +60,6 @@
 
 .nav-previous {
     float: left;
-}
-
-#primary {
-    @include span-columns(8.5);
-}
-
-#secondary {
-    @include span-columns(3.5);
 }
 
 @import "navigation";
