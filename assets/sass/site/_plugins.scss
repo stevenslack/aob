@@ -167,6 +167,7 @@
 
 // instagram feed
 #aob-intagram-feed {
+
 	.sbi_follow_btn {
 		a {
 			background: $bright-red;
@@ -177,13 +178,17 @@
 		}
 	}
 
-	#sb_instagram.sbi_col_8.sbi_disable_mobile #sbi_images .sbi_item {
-		@media screen and ( max-width: em(500) ) {
-			width: 50%;
-		}
+	#sb_instagram {
+		margin-bottom: -5px;
 
-		@media screen and ( min-width: em(501) ) and ( max-width: em(769) ) {
-			width: 25%;
+		.sbi_col_8.sbi_disable_mobile #sbi_images .sbi_item {
+			@media screen and ( max-width: em(500) ) {
+				width: 50%;
+			}
+
+			@media screen and ( min-width: em(501) ) and ( max-width: em(769) ) {
+				width: 25%;
+			}
 		}
 	}
 }
