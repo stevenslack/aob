@@ -1,5 +1,6 @@
-<?php $text = aob_get_banner_text();
-$display_text = aob_get_var( 'display_text' );
+<?php
+	$text = aob_get_banner_text();
+	$display_text = aob_get_var( 'display_text' );
 ?>
 <div class="banner-text">
 	<?php if ( false !== aob_get_var( 'logo_display' ) ) :

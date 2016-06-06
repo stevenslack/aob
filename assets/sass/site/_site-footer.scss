@@ -4,7 +4,20 @@
     color: #FFF;
     padding: 3em 5.417em;
 
-    a {
-        color: #FDE7AD;
+    .social {
+    	margin-top: 1em;
     }
+}
+
+.footer-logo {
+	text-align: center;
+}
+
+#colophon {
+	.nav {
+		background-color: transparent;
+        li a {
+            color: white;
+        }
+	}
 }

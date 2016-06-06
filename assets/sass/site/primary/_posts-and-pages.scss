@@ -10,6 +10,12 @@ article.hentry {
     margin: 0 0 2.5em;
     padding-bottom: 2.5em;
     border-bottom: 4px solid rgba(147, 202, 186, 0.41);
+
+    &:last-of-type {
+        border-bottom: none;
+        padding-bottom: none;
+        margin-bottom: 1em;
+    }
 }
 
 // blog

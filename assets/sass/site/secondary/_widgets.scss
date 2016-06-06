@@ -1,5 +1,9 @@
 #secondary {
     padding-top: em(38);
+
+    @media screen and ( min-width: em(970) ) {
+        padding-top: 0;
+    }
 }
 
 .widget-area {
@@ -75,8 +79,6 @@
             &:hover {
                 background:$mid-red;
             }
-
-
         }
 
         .mc-field-group {
