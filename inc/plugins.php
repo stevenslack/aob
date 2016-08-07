@@ -75,6 +75,8 @@ if ( function_exists( 'tribe_get_start_date' ) ) {
 	 * @return [type] [description]
 	 */
 	function aob_event_widget_before_title() {
+		global $post;
+
 		/**
 		 * Tribe Start Date
 		 *
