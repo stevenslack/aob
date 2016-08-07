@@ -107,7 +107,7 @@ function aob_categories( $class_name = 'cat-links', $deliminator = ', ' ) {
 		printf( $output_string, $class_name, get_the_term_list( get_the_id(), 'tribe_events_cat', '', $deliminator ) );
 	}
 
-	if ( $categories_list && _aob_categorized_blog() ) {
+	if ( _aob_categorized_blog() ) {
 		printf( $output_string, $class_name, get_the_category_list( $deliminator ) );
 	}
 }
